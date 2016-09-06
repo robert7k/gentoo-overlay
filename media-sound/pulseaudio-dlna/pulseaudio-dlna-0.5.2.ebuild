@@ -40,3 +40,8 @@ RDEPEND="${DEPEND}"
 pkg_setup() {
 	export PREFIX="/usr"
 }
+
+src_install() {
+	emake DESTDIR="${D}" install
+	make_desktop_entry "${PN} -p 8181" "Pulseaudio DLNA" system-run
+}
