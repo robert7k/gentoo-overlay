@@ -1,2 +1,0 @@
-#!/bin/sh
-/etc/java-config-2/current-system-vm/bin/java -jar /opt/fakeSMTP/fakeSMTP-2.0.jar -s -p 2525 -o /tmp/fakeSmtp-received-mails
