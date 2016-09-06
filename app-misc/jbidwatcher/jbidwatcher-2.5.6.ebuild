@@ -22,5 +22,5 @@ src_install() {
 	java-pkg_newjar ${DISTDIR}/${A} ${PN}.jar || die "java-pkg_newjar faild"
 	java-pkg_dolauncher ${PN} --jar ${PN}.jar --java_args "-Xmx512m" || die "java-pkg_dolauncher failed"
 	doicon ${FILESDIR}/${PN}.png
-	make_desktop_entry "${PN}" "${MY_PN}" "${PN}" || die "make_desktop_entryfailed "
+	make_desktop_entry "${PN}" "${MY_PN}" "${PN}" "Network" || die "make_desktop_entryfailed "
 }
