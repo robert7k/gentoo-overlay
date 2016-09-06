@@ -7,7 +7,7 @@ inherit eutils
 
 DESCRIPTION="FakeSMTP is a Free Fake SMTP Server with GUI for testing emails in applications easily."
 HOMEPAGE="http://nilhcem.github.io/FakeSMTP/"
-SRC_URI="http://nilhcem.github.com/FakeSMTP/downloads/fakeSMTP-latest.zip"
+SRC_URI="http://nilhcem.github.com/FakeSMTP/downloads/fakeSMTP-latest.zip -> ${P}.zip"
 LICENSE="BSD"
 IUSE=""
 SLOT="0"
@@ -24,15 +24,14 @@ MY_PN="fakesmtp"
 
 src_unpack() {
 	unpack ${A}
-	unpack ${S}/fakeSMTP-2.0.jar
 	cp "$FILESDIR/fakesmtp" ${S}
 }
 
 src_install() {
-	newicon ${S}/icon.gif ${MY_PN}.gif
+	doicon ${FILESDIR}/${MY_PN}.png
 	dodir ${INSTDIR}
 	cp ${S}/fakeSMTP-2.0.jar ${D}${INSTDIR}
 	dobin ${MY_PN} 
-	make_desktop_entry ${MY_PN} "FakeSMTP" "${MY_PN}.gif" "Development"
+	make_desktop_entry ${MY_PN} "FakeSMTP" ${MY_PN} "Development"
 }
 
