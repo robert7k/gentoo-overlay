@@ -7,7 +7,7 @@ HOMEPAGE="http://www.washington.edu/alpine/ http://patches.freeiz.com/alpine/ ht
 SRC_URI="http://repo.or.cz/alpine.git/snapshot/3a705ccfd0bb4d65d4bc35683726971edfd9309c.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="doc ipv6 kerberos ldap nls passfile smime spell ssl threads topal"
 
