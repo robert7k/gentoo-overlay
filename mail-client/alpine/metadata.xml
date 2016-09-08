@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="passfile">Adds support for caching passwords into a file between sessions</flag>
+		<flag name="smime">Enable support for S/MIME</flag>
+		<flag name="topal">Enable support GnuPG encryption using <pkg>net-mail/topal</pkg></flag>
+	</use>
+</pkgmetadata>
