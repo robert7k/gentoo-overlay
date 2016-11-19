@@ -1,0 +1,2 @@
+# Driver is not working as expected
+=net-print/brother-hl5250dn-bin-2.0.1
