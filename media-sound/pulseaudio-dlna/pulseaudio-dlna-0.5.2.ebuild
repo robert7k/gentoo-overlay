@@ -34,6 +34,7 @@ DEPEND="dev-python/beautifulsoup:python-2
 	dev-python/psutil[python_targets_python2_7?]
 	dev-python/futures[python_targets_python2_7?]
 	dev-python/chardet[python_targets_python2_7?]
+	dev-python/lxml[python_targets_python2_7?]
 	dev-python/netifaces[python_targets_python2_7?]"
 RDEPEND="${DEPEND}"
 
