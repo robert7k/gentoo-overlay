@@ -15,7 +15,7 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
 MOZ_HTTP_URI="http://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
 
-inherit eutils multilib pax-utils fdo-mime gnome2-utils mozlinguas nsplugins
+inherit eutils multilib pax-utils fdo-mime gnome2-utils mozlinguas-v2 nsplugins
 
 DESCRIPTION="Firefox Web Browser"
 SRC_URI="${SRC_URI}
@@ -23,7 +23,7 @@ SRC_URI="${SRC_URI}
 HOMEPAGE="http://www.mozilla.com/firefox"
 RESTRICT="strip mirror"
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="selinux startup-notification"
