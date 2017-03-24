@@ -1,0 +1,4 @@
+#_JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
+#IDEA_JDK="$(java-config --select-vm=icedtea-8 -O)"
+IDEA_VM_OPTIONS="/etc/idea/idea-2017.vmoptions"
+IDEA_PROPERTIES="/etc/idea/idea-2017.properties"
