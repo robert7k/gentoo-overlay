@@ -18,7 +18,7 @@ inherit eutils multilib pax-utils fdo-mime gnome2-utils mozlinguas-v2 nsplugins
 
 DESCRIPTION="Firefox Developer Edition"
 SRC_URI="${MOZ_HTTP_URI%/}/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2"
-HOMEPAGE="http://www.mozilla.com/firefox"
+HOMEPAGE="https://www.mozilla.org/firefox/developer/"
 RESTRICT="strip mirror"
 
 KEYWORDS="-* ~amd64"
