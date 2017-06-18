@@ -8,16 +8,16 @@ EAPI="5"
 MOZ_LANGS=( en de )
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
-MOZ_PV="${PV/_alpha/a}" # Handle alpha for SRC_URI
+MOZ_PV="${PV/_beta/b}" # Handle alpha for SRC_URI
 MOZ_PN="${PN/-developer-bin}"
 MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
-MOZ_HTTP_URI="http://archive.mozilla.org/pub/${MOZ_PN}/nightly/latest-mozilla-aurora/"
+MOZ_HTTP_URI="https://download-installer.cdn.mozilla.net/pub/devedition/releases/${MOZ_PV}/linux-x86_64/en-US/"
 
 inherit eutils multilib pax-utils fdo-mime gnome2-utils mozlinguas-v2 nsplugins
 
 DESCRIPTION="Firefox Developer Edition"
-SRC_URI="${MOZ_HTTP_URI%/}/${MOZ_P}.en-US.linux-x86_64.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2"
+SRC_URI="${MOZ_HTTP_URI%/}/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2"
 HOMEPAGE="http://www.mozilla.com/firefox"
 RESTRICT="strip mirror"
 
