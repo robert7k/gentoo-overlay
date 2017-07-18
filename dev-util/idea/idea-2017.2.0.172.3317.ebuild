@@ -67,17 +67,21 @@ src_install() {
 
 	ln -s /etc/idea/idea-${SLOT}.properties bin/idea.properties
 
+	if [[ "$ARCH" == "amd64" ]]; then
+		rm -rf jre64 || die
+		dosym "/etc/java-config-2/current-system-vm" "${dir}/jre64"
+	else
+		rm -rf jre || die
+		dosym "/etc/java-config-2/current-system-vm" "${dir}/jre"
+	fi
+
+	rm bin/fsnotifier-arm
+	rm -rf plugins/tfsIntegration/lib/native/linux/ppc
+	rm -rf plugins/tfsIntegration/lib/native/solaris
+
 	# idea itself
 	insinto "${dir}"
 	doins -r *
-
-	if [[ "$ARCH" == "amd64" ]]; then
-		rm -rf "${D}${dir}/jre64" || die
-		dosym "/etc/java-config-2/current-system-vm" "${dir}/jre64"
-	else
-		rm -rf "${D}${dir}/jre" || die
-		dosym "/etc/java-config-2/current-system-vm" "${dir}/jre"
-	fi
 
 	fperms 755 "${dir}/bin/${PN}.sh"
 	fperms 755 "${dir}/bin/fsnotifier"
