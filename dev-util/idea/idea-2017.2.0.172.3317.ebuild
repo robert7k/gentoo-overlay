@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+
 EAPI="4"
 inherit eutils versionator
 
@@ -70,6 +70,14 @@ src_install() {
 	# idea itself
 	insinto "${dir}"
 	doins -r *
+
+	if [[ "$ARCH" == "amd64" ]]; then
+		rm -rf "${D}${dir}/jre64" || die
+		dosym "/etc/java-config-2/current-system-vm" "${dir}/jre64"
+	else
+		rm -rf "${D}${dir}/jre" || die
+		dosym "/etc/java-config-2/current-system-vm" "${dir}/jre"
+	fi
 
 	fperms 755 "${dir}/bin/${PN}.sh"
 	fperms 755 "${dir}/bin/fsnotifier"
