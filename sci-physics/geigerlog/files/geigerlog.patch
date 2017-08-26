@@ -1,0 +1,33 @@
+diff -Naur /tmp/geigerlog/geigerlog ./geigerlog
+--- /tmp/geigerlog/geigerlog	2017-07-13 12:31:28.000000000 +0200
++++ ./geigerlog	2017-08-26 19:09:38.539538548 +0200
+@@ -18,6 +18,8 @@
+ from PyQt4.phonon import Phonon # used only for an error sound
+ 
+ from matplotlib import __version__ as mplVersion
++import matplotlib as mpl
++mpl.use("Qt4Agg")
+ import matplotlib.backends.backend_qt4agg
+ from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+ from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
+@@ -3569,7 +3571,7 @@
+     else:
+         # dir does not exist; make it
+         try:
+-            os.mkdir(gglobs.dataPath )
++            os.makedirs(gglobs.dataPath )
+         except:
+             # dir cannot be made
+             print "ERROR: main: could not make data directory " + gglobs.dataDirectory
+diff -Naur /tmp/geigerlog/gutils.py ./gutils.py
+--- /tmp/geigerlog/gutils.py	2017-06-26 11:41:40.000000000 +0200
++++ ./gutils.py	2017-08-26 19:08:38.765541854 +0200
+@@ -34,7 +34,7 @@
+ def getDataPath(datadir):
+     """Return full path of the data directory"""
+ 
+-    dp = getProgPath() + datadir
++    dp = os.getenv("HOME") + "/.geigerlog" + datadir
+ 
+     return dp
+ 
