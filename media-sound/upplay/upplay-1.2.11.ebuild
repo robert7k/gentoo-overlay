@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-
 EAPI=5
 inherit qmake-utils
 
@@ -15,13 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-qt/qtwebkit:4
-		media-libs/libupnpp"
+DEPEND="dev-qt/qtwebkit:5
+		dev-qt/qtnetwork:5
+		>=media-libs/libupnpp-0.16.0
+		dev-libs/expat"
 RDEPEND="${DEPEND}"
 
 src_compile() {
-#	echo eqmake4 PREFIX="${D}/usr"
-	eqmake4 PREFIX="/usr"
+	eqmake5 PREFIX="/usr"
 	sed -e "s:Categories=.*$:Categories=Audio;AudioVideo;:" \
                 -i upplay.desktop
 }
