@@ -1,39 +1,42 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=6
 
 # Can be updated using scripts/get_langs.sh from mozilla overlay
-MOZ_LANGS=( en de )
+# Missing when bumped : be
+MOZ_LANGS=( de en )
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_beta/b}" # Handle beta for SRC_URI
 MOZ_PV="${MOZ_PV/_rc/rc}" # Handle rc for SRC_URI
 MOZ_PN="${PN/-bin}"
+if [[ ${MOZ_ESR} == 1 ]]; then
+	# ESR releases have slightly version numbers
+	MOZ_PV="${MOZ_PV}esr"
+fi
 MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
 MOZ_HTTP_URI="http://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
 
-inherit eutils multilib pax-utils fdo-mime gnome2-utils mozlinguas-v2 nsplugins
+inherit eutils pax-utils xdg-utils gnome2-utils mozlinguas-v2 nsplugins
 
 DESCRIPTION="Firefox Web Browser"
 SRC_URI="${SRC_URI}
-	amd64? ( ${MOZ_HTTP_URI%/}/${MOZ_PV}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )"
+		${MOZ_HTTP_URI%/}/${MOZ_PV}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2"
 HOMEPAGE="http://www.mozilla.com/firefox"
 RESTRICT="strip mirror"
 
 KEYWORDS="-* ~amd64"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="selinux startup-notification"
+IUSE="+ffmpeg +pulseaudio selinux startup-notification"
 
 DEPEND="app-arch/unzip"
 RDEPEND="dev-libs/atk
 	>=sys-apps/dbus-0.60
 	>=dev-libs/dbus-glib-0.72
 	>=dev-libs/glib-2.26:2
-	>=media-libs/alsa-lib-1.0.16
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
 	>=x11-libs/cairo-1.10[X]
@@ -49,6 +52,9 @@ RDEPEND="dev-libs/atk
 	x11-libs/libXt
 	>=x11-libs/pango-1.22.0
 	virtual/freedesktop-icon-theme
+	pulseaudio? ( !<media-sound/apulse-0.1.9
+		|| ( media-sound/pulseaudio media-sound/apulse ) )
+	ffmpeg? ( media-video/ffmpeg )
 	selinux? ( sec-policy/selinux-mozilla )
 "
 
@@ -124,11 +130,12 @@ src_install() {
 
 	# Create /usr/bin/firefox-bin
 	dodir /usr/bin/
+	local apulselib=$(usex pulseaudio "/usr/$(get_libdir)/apulse:" "")
 	cat <<-EOF >"${ED}"usr/bin/${PN}
 	#!/bin/sh
 	unset LD_PRELOAD
-	LD_LIBRARY_PATH="/opt/firefox/"
-	GTK_PATH=/usr/lib/gtk-2.0/
+	LD_LIBRARY_PATH="${apulselib}/opt/firefox/" \\
+	GTK_PATH=/usr/lib/gtk-3.0/ \\
 	exec /opt/${MOZ_PN}/${MOZ_PN} "\$@"
 	EOF
 	fperms 0755 /usr/bin/${PN}
@@ -138,7 +145,7 @@ src_install() {
 	echo "SEARCH_DIRS_MASK=${MOZILLA_FIVE_HOME}" >> ${T}/10${PN}
 	doins "${T}"/10${PN} || die
 
-	# Plugins dir
+	# Plugins dir, still used for flash
 	share_plugins_dir
 
 	# Required in order to use plugins and even run firefox on hardened.
@@ -157,18 +164,11 @@ pkg_postinst() {
 		einfo "gnome-base/orbit and net-misc/curl emerged."
 		einfo
 	fi
-	einfo "For HTML5 video you need media-video/ffmpeg installed."
-
-	# Drop requirement of curl not built with nss as it's not necessary anymore
-	#if has_version 'net-misc/curl[nss]'; then
-	#	einfo
-	#	einfo "Crashreporter won't be able to send reports"
-	#	einfo "if you have curl emerged with the nss USE-flag"
-	#	einfo
-	#fi
+	use ffmpeg || ewarn "USE=-ffmpeg : HTML5 video will not render without media-video/ffmpeg installed"
+	use pulseaudio || ewarn "USE=-pulseaudio : audio will not play without pulseaudio installed"
 
 	# Update mimedb for the new .desktop file
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	gnome2_icon_cache_update
 }
 
