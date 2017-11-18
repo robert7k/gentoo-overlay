@@ -20,7 +20,7 @@ RESTRICT="bindist mirror"
 
 DEPEND="
 	gnome-base/gconf:2
-	dev-libs/libappindicator
+	dev-libs/libappindicator:3
 	dev-libs/nss
 	x11-libs/libXtst
 	"
@@ -33,18 +33,18 @@ QA_PREBUILT="opt/Signal/signal-desktop
 S="${WORKDIR}"
 
 src_install() {
-    doins -r "${S}/"*
+	doins -r "${S}/"*
 	fperms +x /opt/Signal/signal-desktop
 
 	dosym /opt/Signal/${MY_PN} usr/bin/${MY_PN}
 }
 
 pkg_postinst() {
-    xdg_desktop_database_update
-    gnome2_icon_cache_update
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-    xdg_desktop_database_update
-    gnome2_icon_cache_update
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }
