@@ -5,7 +5,7 @@ EAPI=6
 
 MY_PN="${PN/-bin/}"
 
-inherit eutils gnome2-utils unpacker xdg-utils
+inherit gnome2-utils unpacker xdg-utils
 
 DESCRIPTION="Signal Desktop"
 HOMEPAGE="https://signal.org/ https://github.com/WhisperSystems/Signal-Desktop"
@@ -18,13 +18,12 @@ IUSE=""
 
 RESTRICT="bindist mirror"
 
-DEPEND="
+RDEPEND="
 	gnome-base/gconf:2
 	dev-libs/libappindicator:3
 	dev-libs/nss
 	x11-libs/libXtst
 	"
-RDEPEND="${DEPEND}"
 
 QA_PREBUILT="opt/Signal/signal-desktop
 	opt/Signal/libnode.so
@@ -33,10 +32,10 @@ QA_PREBUILT="opt/Signal/signal-desktop
 S="${WORKDIR}"
 
 src_install() {
-	doins -r "${S}/"*
+	doins -r .
 	fperms +x /opt/Signal/signal-desktop
 
-	dosym /opt/Signal/${MY_PN} usr/bin/${MY_PN}
+	dosym ../../opt/Signal/${MY_PN} /usr/bin/${MY_PN}
 }
 
 pkg_postinst() {
