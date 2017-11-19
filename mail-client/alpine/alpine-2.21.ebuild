@@ -1,5 +1,7 @@
-EAPI=4
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
 inherit eutils flag-o-matic autotools multilib toolchain-funcs
 
 DESCRIPTION="alpine is an easy to use text-based based mail and news client"
@@ -7,34 +9,28 @@ HOMEPAGE="http://www.washington.edu/alpine/ http://alpine.freeiz.com/alpine/ htt
 SRC_URI="http://alpine.freeiz.com/alpine/release/src/${P}.tar.xz"
 
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="doc ipv6 kerberos ldap nls passfile smime spell ssl threads topal"
+KEYWORDS="~amd64 ~x86"
+IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine passfile smime spell ssl threads"
 
 DEPEND="virtual/pam
-	>=net-libs/c-client-2007f-r4[topal=]
-	>=sys-libs/ncurses-5.1
-	>=dev-libs/openssl-1.0.1c
+	>=net-libs/c-client-2007f-r4
+	>=sys-libs/ncurses-5.1:0=
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	ldap? ( net-nds/openldap )
 	kerberos? ( app-crypt/mit-krb5 )
 	spell? ( app-text/aspell )
-	topal? ( >=net-mail/topal-72 )"
+"
 RDEPEND="${DEPEND}
 	app-misc/mime-types
 	!<=net-mail/uw-imap-2004g"
 
-pkg_setup() {
-	if use smime && use topal ; then
-		ewarn "You can not have USE='smime topal'. Assuming topal is more important."
-	fi
-}
-
-src_unpack() {
-	unpack ${A}
-	mv ${WORKDIR}/alpine-59678f8 ${WORKDIR}/${P}
-}
-
 src_prepare() {
+	default
+	mv "${WORKDIR}/alpine-59678f8" "${WORKDIR}/${P}"
 	eautoreconf
 }
 
@@ -63,7 +59,7 @@ src_configure() {
 		$(use_with spell interactive-spellcheck /usr/bin/aspell) \
 		$(use_enable nls) \
 		$(use_with ipv6) \
-		$(use topal || use_with smime) \
+		$(use_with smime) \
 		${myconf}
 }
 
@@ -72,12 +68,18 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	doman doc/man1/*.1
+	if use onlyalpine ; then
+		dobin alpine/alpine
+		doman doc/alpine.1
+	else
+		emake DESTDIR="${D}" install
+		doman doc/man1/*.1
+	fi
+
 	dodoc NOTICE README*
 
 	if use doc ; then
-		dodoc doc/brochure.txt 
+		dodoc doc/brochure.txt
 
 		docinto html/tech-notes
 		dohtml -r doc/tech-notes/
