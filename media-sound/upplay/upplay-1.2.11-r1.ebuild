@@ -20,6 +20,10 @@ DEPEND="dev-qt/qtwebkit:5
 		dev-libs/expat"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	epatch "${FILESDIR}/close.patch"
+}
+
 src_compile() {
 	eqmake5 PREFIX="/usr"
 	sed -e "s:Categories=.*$:Categories=Audio;AudioVideo;:" \
