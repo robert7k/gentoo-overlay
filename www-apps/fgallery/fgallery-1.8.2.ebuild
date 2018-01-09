@@ -14,8 +14,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	media-gfx/imagemagick
-	media-libs/lcms
+	media-gfx/imagemagick[tiff,jpeg,lcms]
+	media-libs/exiftool
 	app-arch/zip
 	>=dev-lang/perl-5.14[ithreads]
 	dev-perl/JSON-XS"
