@@ -86,7 +86,7 @@ src_install() {
 	done
 	# The 128x128 icon has a different name
 	insinto /usr/share/icons/hicolor/128x128/apps
-	newins "${icon_path}/../../../icons/mozicon128.png" "${icon}.png" || die
+	newins "${icon_path}/default128.png" "${icon}.png" || die
 	# Install a 48x48 icon into /usr/share/pixmaps for legacy DEs
 	newicon "${S}"/browser/chrome/icons/default/default48.png ${PN}.png
 	domenu "${FILESDIR}"/${PN}.desktop
