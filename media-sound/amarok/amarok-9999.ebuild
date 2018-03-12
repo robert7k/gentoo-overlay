@@ -4,7 +4,6 @@
 EAPI=6
 
 EGIT_REPO_URI="https://github.com/KDE/amarok"
-EGIT_BRANCH="kf5"
 KDE_HANDBOOK="true"
 KDE_TEST="true"
 VIRTUALX_REQUIRED="test"
