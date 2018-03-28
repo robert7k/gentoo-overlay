@@ -5,7 +5,7 @@ EAPI="4"
 inherit eutils versionator
 
 SLOT="$(get_major_version)"
-RDEPEND=">=virtual/jdk-1.7"
+RDEPEND=">=virtual/jdk-1.8"
 
 RESTRICT="strip mirror"
 QA_TEXTRELS="opt/${P}/bin/libbreakgen.so"
