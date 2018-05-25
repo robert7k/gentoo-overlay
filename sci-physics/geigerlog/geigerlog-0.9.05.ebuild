@@ -27,7 +27,7 @@ S="${WORKDIR}/${PN}"
 src_unpack() {
     unpack ${A}
     cd "${S}"
-    epatch "${FILESDIR}/${PN}.patch"
+    epatch "${FILESDIR}/${P}.patch"
 }
 
 src_install() {
