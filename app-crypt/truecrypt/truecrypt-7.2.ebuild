@@ -45,7 +45,7 @@ src_prepare() {
 	fi
 
 	epatch "${FILESDIR}/makefile-archdetect.diff"
-	epatch "${FILESDIR}/execstack-fix.diff"
+	epatch --binary "${FILESDIR}/execstack-fix.diff"
 	epatch "${FILESDIR}/${PN}-7.1a-build.patch"
 	mkdir "${T}"/pkcs11 || die
 	ln -s "${DISTDIR}"/${P}-pkcs11.h "${T}"/pkcs11/pkcs11.h || die
