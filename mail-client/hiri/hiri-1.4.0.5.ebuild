@@ -32,7 +32,8 @@ src_install() {
 	insinto /opt/${PN}
 	doins -r $S/*
 
-	fperms a+x /opt/${PN}/hiri.sh /opt/${PN}/hirimain /opt/${PN}/QtWebEngineProcess
+	exeinto /opt/${PN}
+	doexe hiri.sh hirimain QtWebEngineProcess
 
 	doicon $S/hiri.png
 	make_desktop_entry /opt/${PN}/${PN}.sh "Hiri" ${PN} "Network"
