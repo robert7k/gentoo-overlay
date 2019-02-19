@@ -35,6 +35,8 @@ src_install() {
 	exeinto /opt/${PN}
 	doexe hiri.sh hirimain QtWebEngineProcess
 
-	doicon $S/hiri.png
-	make_desktop_entry /opt/${PN}/${PN}.sh "Hiri" ${PN} "Network"
+	dosym /opt/${PN}/${PN}.sh /usr/bin/${PN}
+	dosym /opt/${PN}/hirimain /usr/bin/hirimain
+	doicon hiri.png
+	make_desktop_entry ${PN} "Hiri" ${PN} "Network"
 }
