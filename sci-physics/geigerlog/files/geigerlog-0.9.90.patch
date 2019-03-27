@@ -1,0 +1,33 @@
+diff -Naur ./geigerlog ./geigerlog
+--- ./geigerlog	2019-03-27 12:30:25.070771055 +0100
++++ ./geigerlog	2019-03-22 11:02:36.000000000 +0100
+@@ -6613,7 +6613,7 @@
+     else:
+         # dir does not exist; make it
+         try:
+-            os.mkdir(gglobs.dataPath )
++            os.makedirs(gglobs.dataPath)
+         except:
+             # dir cannot be made
+             print("ERROR: main: Could not make data directory '{}'".format(gglobs.dataDirectory))
+diff -Naur ./gutils.py ./gutils.py
+--- ./gutils.py	2019-03-27 12:31:07.584768703 +0100
++++ ./gutils.py	2019-03-22 15:24:38.000000000 +0100
+@@ -56,7 +56,7 @@
+ # Windows: 'win32' apparently all versions of Windows
+ #
+ if   'LINUX'   in platform.platform().upper():  # e.g. 'Linux-4.15.0-43-generic-x86_64-with-Ubuntu-16.04-xenial'
+-    gglobs.my_active_qt_version   = 4
++    gglobs.my_active_qt_version   = 5
+ 
+ elif 'WINDOWS' in platform.platform().upper():  # e.g. 'Windows-10-10.0.17134-SP0'
+     gglobs.my_active_qt_version   = 5
+@@ -148,7 +148,7 @@
+ 
+ def getDataPath():
+     """Return full path of the data directory"""
+-    dp = os.path.join(getProgPath(), gglobs.dataDirectory)
++    dp = os.path.join(os.getenv("HOME"), ".geigerlog")
+     return dp
+ 
+ 

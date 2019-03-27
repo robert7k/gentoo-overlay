@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-lang/python:3.6
+	dev-lang/python:3.6[sqlite]
 	dev-python/PyQt5
 	dev-python/setuptools
 	dev-python/matplotlib
@@ -26,13 +26,11 @@ RDEPEND="
 	dev-python/pyaudio
 	"
 
-S="${WORKDIR}/${PN}"
+PATCHES=(
+	"${FILESDIR}/${P}.patch"
+)
 
-src_unpack() {
-    unpack ${A}
-    cd "${S}"
-#    epatch "${FILESDIR}/${PF}.patch"
-}
+S="${WORKDIR}/${PN}"
 
 src_install() {
 	MANUAL="${S}/GeigerLog-Manual-v${PV}.pdf"
