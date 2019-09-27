@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE=""
 RESTRICT="bindist"
 
-DEPEND=""
+DEPEND="dev-libs/openssl-compat:1.0.0"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
