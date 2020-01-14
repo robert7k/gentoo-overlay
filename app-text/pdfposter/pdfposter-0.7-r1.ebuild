@@ -7,7 +7,7 @@ DESCRIPTION="Scale and tile PDF images/pages to print on multiple pages."
 HOMEPAGE="http://pythonhosted.org/pdftools.pdfposter/ https://gitlab.com/pdftools/pdfposter"
 EGIT_REPO_URI="https://gitlab.com/pdftools/pdfposter"
 EGIT_COMMIT="v${PV}"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit git-r3 distutils-r1
 
@@ -26,5 +26,5 @@ python_install_all() {
 	distutils-r1_python_install_all
 	# find "${ED}" -name '*.pth' -delete || die
 	# Replace broken symlink created by install script
-	dosym /usr/lib/python-exec/python2.7/pdfposter usr/bin/pdfposter
+	dosym /usr/lib/python-exec/python3.6/pdfposter usr/bin/pdfposter
 }
