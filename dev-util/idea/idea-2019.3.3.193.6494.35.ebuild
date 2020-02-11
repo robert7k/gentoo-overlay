@@ -63,7 +63,6 @@ src_install() {
 
 	ln -s /etc/idea/idea-${SLOT}.properties bin/idea.properties
 
-	rm bin/fsnotifier-arm
 	rm -rf plugins/tfsIntegration/lib/native/linux/ppc
 	rm -rf plugins/tfsIntegration/lib/native/solaris
 
