@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN="${PN/-bin/}"
 
-inherit pax-utils unpacker xdg-utils
+inherit eutils pax-utils unpacker xdg-utils
 
 DESCRIPTION="Allows you to send and receive messages of Signal Messenger on your computer"
 HOMEPAGE="https://signal.org/
@@ -28,17 +28,21 @@ RDEPEND="
 
 QA_PREBUILT="opt/Signal/signal-desktop
 	opt/Signal/chrome-sandbox
+	opt/Signal/crashpad_handler
 	opt/Signal/libffmpeg.so
 	opt/Signal/libGLESv2.so
 	opt/Signal/libnode.so
 	opt/Signal/libVkICD_mock_icd.so
+	opt/Signal/libvk_swiftshader.so
 	opt/Signal/swiftshader/libGLESv2.so
 	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/build/Release/sharp.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/lib/*"
 
+RESTRICT="splitdebug"
+
 S="${WORKDIR}"
 
-src_prepare(){
+src_prepare() {
 	default
 	sed -e 's|\("/opt/Signal/signal-desktop"\)|\1 --start-in-tray|g' \
 		-i usr/share/applications/signal-desktop.desktop || die
@@ -67,6 +71,8 @@ src_install() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
+
+	optfeature "using the tray icon in Xfce desktop environments" xfce-extra/xfce4-statusnotifier-plugin
 }
 
 pkg_postrm() {
