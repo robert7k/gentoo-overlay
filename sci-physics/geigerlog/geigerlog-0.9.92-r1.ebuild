@@ -44,6 +44,7 @@ src_install() {
 	rm -r "${S}/data"
 	dodir /usr/share/${PN}
 	cp -r ${S}/* ${D}/usr/share/${PN}
+	dosym /usr/share/${PN}/${PN} /usr/bin/${PN}
 	python_fix_shebang ${D}/usr/share/${PN}/${PN}
 	make_desktop_entry ${PN} GeigerLog /usr/share/${PN}/gres/icon_geigerlog.png
 }
