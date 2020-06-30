@@ -8,7 +8,7 @@ inherit autotools toolchain-funcs
 DESCRIPTION="An easy to use text-based based mail and news client"
 HOMEPAGE="http://alpine.x10host.com/alpine/ https://repo.or.cz/alpine.git/"
 CHAPPA_PATCH_NAME="${P}-chappa.patch"
-COMMIT="ddabc05251a15f67f95741fc5eaa8ce4354dfa78"
+COMMIT="7b8875f8bb237a156a1250629e8c684706bd202f"
 SRC_URI="https://repo.or.cz/alpine.git/snapshot/${COMMIT}.tar.gz -> ${P}.tar.gz
 	chappa? ( http://alpine.x10host.com/alpine/alpha/patches/${P}/all.patch.gz -> ${CHAPPA_PATCH_NAME}.gz ) "
 
