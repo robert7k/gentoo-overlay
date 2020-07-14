@@ -15,7 +15,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 
-DEPEND="net-libs/libupnp"
+DEPEND="net-libs/libupnp
+	media-libs/libnpupnp
+	"
 RDEPEND="${DEPEND}"
 
 src_install() {
