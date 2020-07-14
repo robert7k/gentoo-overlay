@@ -19,8 +19,7 @@ DEPEND="
 		dev-libs/jsoncpp
 		dev-qt/qtnetwork:5
 		dev-qt/qtwebkit:5
-		>=media-libs/libupnpp-0.17.0
-		net-libs/libupnp:0
+		>=media-libs/libupnpp-0.19.0
 		net-misc/curl"
 RDEPEND="${DEPEND}"
 
