@@ -1,12 +1,13 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-wifi/gkrellm-wifi-0.9.12.ebuild,v 1.12 2008/08/11 17:26:00 armin76 Exp $
+
+EAPI=7
 
 inherit multilib
 
 DESCRIPTION="A GKrellM2 plug-in for monitoring the link quality of your wireless LAN cards"
-HOMEPAGE="http://dev.gentoo.org/~brix/files/gkrellm-wifi/"
-SRC_URI="http://dev.gentoo.org/~brix/files/gkrellm-wifi/${P}.tar.gz"
+HOMEPAGE="https://github.com/tecknicaltom/gkrellm-wifi"
+SRC_URI="https://github.com/tecknicaltom/gkrellm-wifi/archive/${PV}.zip"
 
 SLOT="0"
 LICENSE="GPL-2"
