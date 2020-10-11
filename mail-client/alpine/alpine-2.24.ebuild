@@ -8,16 +8,15 @@ inherit autotools toolchain-funcs
 DESCRIPTION="An easy to use text-based based mail and news client"
 HOMEPAGE="http://alpine.x10host.com/alpine/ https://repo.or.cz/alpine.git/"
 CHAPPA_PATCH_NAME="${P}-chappa.patch"
-COMMIT="7b8875f8bb237a156a1250629e8c684706bd202f"
-SRC_URI="https://repo.or.cz/alpine.git/snapshot/${COMMIT}.tar.gz -> ${P}.tar.gz
-	chappa? ( http://alpine.x10host.com/alpine/alpha/patches/${P}/all.patch.gz -> ${CHAPPA_PATCH_NAME}.gz ) "
+SRC_URI="http://alpine.x10host.com/alpine/release/src/${P}.tar.xz
+	chappa? ( http://alpine.x10host.com/alpine/patches/${P}/all.patch.gz -> ${CHAPPA_PATCH_NAME}.gz ) "
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="+chappa doc ipv6 kerberos ldap libressl nls onlyalpine passfile smime spell ssl threads"
 
-DEPEND=">=sys-libs/ncurses-5.1:0=
+DEPEND="sys-libs/ncurses
 	kerberos? ( app-crypt/mit-krb5 )
 	ldap? ( net-nds/openldap )
 	spell? ( app-text/aspell )
@@ -29,8 +28,6 @@ DEPEND=">=sys-libs/ncurses-5.1:0=
 RDEPEND="${DEPEND}
 	app-misc/mime-types
 "
-
-S="${WORKDIR}/${PN}-${COMMIT:0:7}"
 
 src_prepare() {
 	default
