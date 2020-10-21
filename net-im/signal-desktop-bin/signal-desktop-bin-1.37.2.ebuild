@@ -107,7 +107,6 @@ src_install() {
 	dosym ../../opt/Signal/${MY_PN} /usr/bin/${MY_PN}
 	dosym ../../usr/lib64/libEGL.so opt/Signal/libEGL.so
 	dosym ../../../usr/lib64/libEGL.so opt/Signal/swiftshader/libEGL.so
-
 }
 
 pkg_postinst() {
