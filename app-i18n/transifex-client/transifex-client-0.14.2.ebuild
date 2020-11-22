@@ -14,14 +14,21 @@ SRC_URI="mirror://pypi/t/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
-RDEPEND="<dev-python/python-slugify-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.19.1[${PYTHON_USEDEP}]
+RDEPEND="dev-python/GitPython[${PYTHON_USEDEP}]
+	<dev-python/python-slugify-5.0.0[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	<dev-python/six-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/urllib3-1.24.2[${PYTHON_USEDEP}]"
+	dev-python/urllib3[${PYTHON_USEDEP}]"
 
 distutils_enable_tests setup.py
+
+src_prepare() {
+	eapply_user
+	sed -i -e 's:test_fetch_timestamp_from_git_tree:_&:' \
+		tests/test_utils.py || die
+}
