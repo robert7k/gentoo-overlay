@@ -15,7 +15,9 @@ KEYWORDS="~amd64"
 IUSE=""
 RESTRICT="bindist"
 
-DEPEND="dev-libs/openssl-compat:1.0.0"
+DEPEND="
+	dev-libs/openssl-compat:1.0.0
+	dev-qt/qtlocation"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
