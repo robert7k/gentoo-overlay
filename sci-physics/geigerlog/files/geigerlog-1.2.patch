@@ -1,0 +1,24 @@
+diff -Naur geigerlog/geigerlog geigerlog.orig/geigerlog
+--- geigerlog/geigerlog 2021-03-01 19:07:42.964968209 +0100
++++ geigerlog.orig/geigerlog    2021-02-14 11:53:14.000000000 +0100
+@@ -111,7 +111,7 @@
+     else:
+         # dir does not exist; make it
+         try:
+-            os.mkdir(gglobs.dataPath )
++            os.makedirs(gglobs.dataPath )
+         except Exception as e:
+             # dir cannot be made
+             print("ERROR: main: Could not make data directory '{}'".format(gglobs.dataDirectory))
+diff -Naur geigerlog/gsup_utils.py geigerlog.orig/gsup_utils.py
+--- geigerlog/gsup_utils.py     2021-03-01 19:08:40.751241737 +0100
++++ geigerlog.orig/gsup_utils.py        2021-03-01 12:39:26.000000000 +0100
+@@ -146,7 +146,7 @@
+ def getDataPath():
+     """Return full path of the data directory"""
+ 
+-    dp = os.path.join(getProgPath(), gglobs.dataDirectory)
++    dp = os.path.join(os.getenv("HOME"), gglobs.dataDirectory)
+     return dp
+ 
+ 
