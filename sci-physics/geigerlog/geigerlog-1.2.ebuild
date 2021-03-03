@@ -34,11 +34,16 @@ RDEPEND="${PYTHON_DEPS}
 	')"
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${P}.patch"
-)
-
 S="${WORKDIR}/${PN}"
+
+src_prepare() {
+	default
+
+	sed -e 's|os.mkdir(gglobs.dataPath|os.makedirs(gglobs.dataPath|g' \
+		-i geigerlog || die
+	sed -z -e '0,/def getDataPath()/ s/dp = os.path.join(getProgPath()/dp = os.path.join(os.getenv("HOME")/' \
+		-i gsup_utils.py || die
+}
 
 src_install() {
 	MANUAL="${S}/GeigerLog-Manual-v${PV}.pdf"
