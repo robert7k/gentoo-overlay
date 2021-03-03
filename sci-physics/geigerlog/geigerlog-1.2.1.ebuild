@@ -51,6 +51,7 @@ src_install() {
 	rm ${MANUAL}
 	rm -r "${S}/data"
 	dodir /usr/share/${PN}
+	chmod +x ${PN}
 	cp -r ${S}/* ${D}/usr/share/${PN}
 	dosym /usr/share/${PN}/${PN} /usr/bin/${PN}
 	python_fix_shebang ${D}/usr/share/${PN}/${PN}
