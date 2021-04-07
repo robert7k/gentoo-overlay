@@ -1,0 +1,10 @@
+--- bin/idea.sh.orig	2019-07-25 09:08:05.060812707 +0200
++++ bin/idea.sh	2019-07-25 09:08:29.989811328 +0200
+@@ -33,6 +33,7 @@
+ 
+ # shellcheck disable=SC2034
+ GREP_OPTIONS=''
++. /etc/conf.d/idea-2021
+ OS_TYPE=$(uname -s)
+ OS_ARCH=$(uname -m)
+ 
