@@ -1,12 +1,8 @@
-# Copyright 1999-2021 Gentoo Foundation
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
-# This ebuild is a modified version of ebuild from java overlay.
 
-EAPI="6"
-inherit eutils java-pkg-2
-
-JAVA_PKG_WANT_TARGET=1.8
+EAPI=7
+inherit desktop eutils java-pkg-2
 
 MY_PN="SweetHome3D"
 
@@ -19,7 +15,7 @@ IUSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="virtual/jre:1.8
+DEPEND=">=virtual/jre-1.8
 	>=dev-java/jnlp-api-6.0"
 
 RDEPEND=""
@@ -33,14 +29,13 @@ QA_PREBUILT="
 	opt/sweethome3d/lib/java3d-1.6/libnativewindow_x11.so
 	opt/sweethome3d/lib/java3d-1.6/libnativewindow_awt.so
 	opt/sweethome3d/lib/java3d-1.6/libjogl_desktop.so
-	opt/sweethome3d/lib/java3d-1.6/libgluegen-rt.so"
+	opt/sweethome3d/lib/java3d-1.6/libgluegen_rt.so"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	rm -rf jre8
+	rm -rf "${S}/jre8"
 }
 
 src_install() {
@@ -53,14 +48,13 @@ src_install() {
 	doins lib/*.so
 	insinto opt/sweethome3d/lib/java3d-1.6
 	doins lib/java3d-1.6/*.so
-	java-pkg_append_ JAVA_PKG_LIBRARY /opt/sweethome3d/lib 
+	java-pkg_append_ JAVA_PKG_LIBRARY /opt/sweethome3d/lib
 	java-pkg_append_ JAVA_PKG_LIBRARY /opt/sweethome3d/lib/java3d-1.6
 	java-pkg_dolauncher "${MY_PN}" --jar "/opt/sweethome3d/lib/${MY_PN}.jar" \
 		--main com.eteks.sweethome3d.SweetHome3D \
 		--java_args "-Xmx2g -Djogamp.gluegen.UseTempJarCache=false -Dcom.eteks.sweethome3d.applicationId=SweetHome3D#Installer"
 	newicon ${MY_PN}Icon.png ${PN}.png
-	make_desktop_entry ${MY_PN} "${MY_PN}" ${PN} 
+	make_desktop_entry ${MY_PN} "${MY_PN}" ${PN}
 
 	java-pkg_do_write_
 }
-
