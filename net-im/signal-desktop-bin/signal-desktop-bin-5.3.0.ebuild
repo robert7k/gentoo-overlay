@@ -68,6 +68,7 @@ QA_PREBUILT="opt/Signal/signal-desktop
 	opt/Signal/swiftshader/libEGL.so
 	opt/Signal/swiftshader/libGLESv2.so
 	opt/Signal/resources/app.asar.unpacked/node_modules/@journeyapps/sqlcipher/lib/binding/napi-v6-linux-x64/node_sqlite3.node
+	opt/Signal/resources/app.asar.unpacked/node_modules/@signalapp/signal-client/prebuilds/linux-x64/node.napi.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/better-sqlite3/build/Release/better_sqlite3.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/curve25519-n/build/Release/curve.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/ffi-napi/build/Release/ffi_bindings.node
@@ -79,6 +80,7 @@ QA_PREBUILT="opt/Signal/signal-desktop
 	opt/Signal/resources/app.asar.unpacked/node_modules/ref-napi/prebuilds/linux-x64/electron.napi.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/ref-napi/prebuilds/linux-x64/node.napi.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/ringrtc/build/linux/libringrtc.node
+	opt/Signal/resources/app.asar.unpacked/node_modules/ringrtc/build/linux/libringrtc-x64.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/build/Release/sharp.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/8.10.6/lib/libvips-cpp.so.42
 	opt/Signal/resources/app.asar.unpacked/node_modules/zkgroup/libzkgroup.so
@@ -94,9 +96,7 @@ src_prepare() {
 		-i usr/share/applications/signal-desktop.desktop || die
 	unpack usr/share/doc/signal-desktop/changelog.gz
 
-	rm opt/Signal/resources/app.asar.unpacked/node_modules/ffi-napi/prebuilds/linux-arm64/node.napi.uv1.armv8.node
-	rm opt/Signal/resources/app.asar.unpacked/node_modules/ref-napi/prebuilds/linux-arm64/electron.napi.armv8.node
-	rm opt/Signal/resources/app.asar.unpacked/node_modules/ref-napi/prebuilds/linux-arm64/node.napi.armv8.node
+	rm opt/Signal/resources/app.asar.unpacked/node_modules/{ffi-napi/prebuilds/linux-arm64/node.napi.uv1.armv8.node,ref-napi/prebuilds/linux-arm64/electron.napi.armv8.node,ref-napi/prebuilds/linux-arm64/node.napi.armv8.node} || die
 }
 
 src_install() {
