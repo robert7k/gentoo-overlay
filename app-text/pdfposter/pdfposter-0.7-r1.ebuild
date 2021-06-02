@@ -7,7 +7,7 @@ DESCRIPTION="Scale and tile PDF images/pages to print on multiple pages."
 HOMEPAGE="http://pythonhosted.org/pdftools.pdfposter/ https://gitlab.com/pdftools/pdfposter"
 EGIT_REPO_URI="https://gitlab.com/pdftools/pdfposter"
 EGIT_COMMIT="v${PV}"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit git-r3 distutils-r1
 
