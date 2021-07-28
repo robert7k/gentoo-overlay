@@ -14,24 +14,17 @@ QA_TEXTRELS="opt/${P}/bin/libbreakgen.so"
 DESCRIPTION="IntelliJ IDEA is an intelligent Java IDE"
 HOMEPAGE="https://jetbrains.com/idea/"
 
-VER=($(get_all_version_components))
-if [[ "${VER[4]}" == "0" ]]; then
-    SRC_URI="https://download.jetbrains.com/${PN}/${PN}IU-$(get_version_component_range 1-2)-no-jbr.tar.gz"
-else
-    SRC_URI="https://download.jetbrains.com/${PN}/${PN}IU-$(get_version_component_range 1-3)-no-jbr.tar.gz"
-fi
+SRC_URI="https://download.jetbrains.com/${PN}/${PN}IU-${PV}-no-jbr.tar.gz"
 
 LICENSE="IntelliJ-IDEA"
 IUSE=""
 KEYWORDS="~x86 ~amd64"
-MY_PV="$(get_version_component_range 4-5)"
-SHORT_PV="$(get_version_component_range 1-2)"
 
-S="${WORKDIR}/${PN}-IU-${MY_PV}"
+S="${WORKDIR}/${PN}-IU-${PV}"
 
 src_unpack() {
 	unpack ${A}
-	mv ${WORKDIR}/${PN}-IU-* ${WORKDIR}/${PN}-IU-${MY_PV}
+	mv ${WORKDIR}/${PN}-IU-* ${WORKDIR}/${PN}-IU-${PV}
 }
 
 src_prepare() {
@@ -73,11 +66,10 @@ src_install() {
 
 	fperms 755 "${dir}/bin/${PN}.sh"
 	fperms 755 "${dir}/bin/fsnotifier"
-	fperms 755 "${dir}/bin/fsnotifier64"
 
 	newicon "bin/${PN}.png" "${exe}.png"
 	make_wrapper "${exe}" "/opt/${P}/bin/${PN}.sh"
-	make_desktop_entry ${exe} "IntelliJ IDEA ${SHORT_PV}" "${exe}" "Development;IDE"
+	make_desktop_entry ${exe} "IntelliJ IDEA ${PV}" "${exe}" "Development;IDE"
 
 	# Protect idea conf on upgrade
 	env_file="${T}/25idea-${SLOT}"
