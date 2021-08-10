@@ -17,6 +17,7 @@ RESTRICT="bindist"
 
 DEPEND="
 	dev-libs/openssl-compat:1.0.0
+	dev-qt/qtwebsockets
 	dev-qt/qtlocation"
 RDEPEND="${DEPEND}"
 BDEPEND=""
@@ -26,6 +27,8 @@ S="${WORKDIR}/hiri_${PV}"
 QA_PREBUILT="/opt/${PN}/*.so
 	/opt/${PN}/*.so.1.0.0
 	/opt/${PN}/*.so.5
+	/opt/${PN}/*.so.56
+	/opt/${PN}/libffi-ae16d830.so.6.0.4
 	/opt/${PN}/libpython3.5m.so.1.0
 	/opt/${PN}/hirimain
 	/opt/${PN}/QtWebEngineProcess"
