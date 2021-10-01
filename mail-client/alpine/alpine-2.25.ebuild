@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,13 +7,14 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="An easy to use text-based based mail and news client"
 HOMEPAGE="http://alpine.x10host.com/alpine/ https://repo.or.cz/alpine.git/"
-COMMIT="465e23b898e5a3393b9ae52fc7620002541b2e75"
-SRC_URI="https://repo.or.cz/alpine.git/snapshot/${COMMIT}.tar.gz -> ${P}.tar.gz"
+CHAPPA_PATCH_NAME="${P}-chappa.patch"
+SRC_URI="http://alpine.x10host.com/alpine/release/src/${P}.tar.xz
+	chappa? ( http://alpine.x10host.com/alpine/patches/${P}/all.patch.gz -> ${CHAPPA_PATCH_NAME}.gz ) "
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc ipv6 kerberos ldap nls onlyalpine passfile smime spell ssl threads"
+KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 ~sparc x86"
+IUSE="+chappa doc ipv6 kerberos ldap nls onlyalpine passfile smime spell ssl threads"
 
 DEPEND="sys-libs/ncurses:=
 	virtual/libcrypt:=
@@ -26,10 +27,9 @@ RDEPEND="${DEPEND}
 	app-misc/mime-types
 "
 
-S="${WORKDIR}/${PN}-${COMMIT:0:7}"
-
 src_prepare() {
 	default
+	use chappa && eapply "${WORKDIR}/${CHAPPA_PATCH_NAME}"
 	eautoreconf
 	tc-export CC RANLIB AR
 	export CC_FOR_BUILD=$(tc-getBUILD_CC)
