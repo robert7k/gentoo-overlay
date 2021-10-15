@@ -9,12 +9,16 @@ DESCRIPTION="An easy to use text-based based mail and news client"
 HOMEPAGE="http://alpine.x10host.com/alpine/ https://repo.or.cz/alpine.git/"
 CHAPPA_PATCH_NAME="${P}-chappa.patch"
 SRC_URI="http://alpine.x10host.com/alpine/release/src/${P}.tar.xz
+	https://repo.or.cz/alpine.git/patch/fb2217ac67706e4cbef69bea41041e2fb8b910e9 -> ${P}-ssl.patch
 	chappa? ( http://alpine.x10host.com/alpine/patches/${P}/all.patch.gz -> ${CHAPPA_PATCH_NAME}.gz ) "
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="+chappa doc ipv6 kerberos ldap nls onlyalpine passfile smime spell ssl threads"
+
+# alpine-2.25-ssl.patch can only be applied when not using the chappa patches.
+REQUIRED_USE="chappa? ( ssl )"
 
 DEPEND="sys-libs/ncurses:=
 	virtual/libcrypt:=
@@ -29,6 +33,9 @@ RDEPEND="${DEPEND}
 
 src_prepare() {
 	default
+	if use !ssl; then
+		eapply "${DISTDIR}/${P}-ssl.patch"
+	fi
 	use chappa && eapply "${WORKDIR}/${CHAPPA_PATCH_NAME}"
 	eautoreconf
 	tc-export CC RANLIB AR
