@@ -15,7 +15,7 @@ SRC_URI="http://alpine.x10host.com/alpine/release/src/${P}.tar.xz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 ~sparc x86"
-IUSE="+chappa doc ipv6 kerberos ldap nls onlyalpine passfile smime spell ssl threads"
+IUSE="+chappa ipv6 kerberos ldap nls onlyalpine passfile smime spell ssl threads"
 
 # alpine-2.25-ssl.patch can only be applied when not using the chappa patches.
 REQUIRED_USE="chappa? ( ssl )"
@@ -83,12 +83,10 @@ src_install() {
 
 	dodoc NOTICE README*
 
-	if use doc ; then
-		dodoc doc/brochure.txt
+	dodoc doc/brochure.txt
 
-		dodoc -r doc/tech-notes/
-		newdoc "${S}/doc/mailcap.unx" mailcap.unx.sample
-		newdoc "${S}/doc/mime.types" mime.types.sample
-		docompress -x /usr/share/doc/${PF}/mailcap.unx.sample /usr/share/doc/${PF}/mime.types.sample
-	fi
+	dodoc -r doc/tech-notes/
+	newdoc "${S}/doc/mailcap.unx" mailcap.unx.sample
+	newdoc "${S}/doc/mime.types" mime.types.sample
+	docompress -x /usr/share/doc/${PF}/mailcap.unx.sample /usr/share/doc/${PF}/mime.types.sample
 }
