@@ -33,20 +33,15 @@ QA_PREBUILT="
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-src_unpack() {
-	unpack ${A}
-	rm -rf "${S}/jre8"
-}
-
 src_install() {
 	java-pkg_register-dependency jnlp-api
-	java-pkg_jarinto opt/sweethome3d/lib
+	java-pkg_jarinto /opt/sweethome3d/lib
 	java-pkg_dojar lib/*.jar
-	java-pkg_jarinto opt/sweethome3d/lib/java3d-1.6
+	java-pkg_jarinto /opt/sweethome3d/lib/java3d-1.6
 	java-pkg_dojar lib/java3d-1.6/*.jar
-	insinto opt/sweethome3d/lib
+	insinto /opt/sweethome3d/lib
 	doins lib/*.so
-	insinto opt/sweethome3d/lib/java3d-1.6
+	insinto /opt/sweethome3d/lib/java3d-1.6
 	doins lib/java3d-1.6/*.so
 	java-pkg_append_ JAVA_PKG_LIBRARY /opt/sweethome3d/lib
 	java-pkg_append_ JAVA_PKG_LIBRARY /opt/sweethome3d/lib/java3d-1.6
