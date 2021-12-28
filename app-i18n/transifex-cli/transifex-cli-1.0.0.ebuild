@@ -219,10 +219,6 @@ KEYWORDS="~amd64"
 
 S=${WORKDIR}/cli-${PV}
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
-
 src_install() {
 	dobin bin/tx
 }
