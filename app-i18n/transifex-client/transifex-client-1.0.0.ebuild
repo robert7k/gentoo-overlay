@@ -223,3 +223,7 @@ src_install() {
 	dobin bin/tx
 	dodoc README.md
 }
+
+src_test() {
+	go test ./...
+}
