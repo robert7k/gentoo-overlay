@@ -11,7 +11,7 @@ SRC_URI=""
 EGIT_REPO_URI="https://github.com/dtan4/skytraq-datalogger.git"
 EGIT_BRANCH="master"
 
-LICENSE="GPLv2"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 

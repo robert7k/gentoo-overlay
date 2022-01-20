@@ -12,7 +12,7 @@ DESCRIPTION="A Python based GUI program to work with GQ Electronic's Geiger coun
 HOMEPAGE="https://sourceforge.net/projects/geigerlog/"
 SRC_URI="https://downloads.sourceforge.net/project/geigerlog/geigerlog-v${PV}.zip"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

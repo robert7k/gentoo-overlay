@@ -11,7 +11,7 @@ DESCRIPTION="Java key-store management tool."
 SRC_URI="https://github.com/kaikramer/${PN}/releases/download/v${PV}/kse-${MY_PV}.zip"
 HOMEPAGE="http://keystore-explorer.org https://github.com/kaikramer/keystore-explorer"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 IUSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

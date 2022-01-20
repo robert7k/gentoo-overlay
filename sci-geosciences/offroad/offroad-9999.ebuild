@@ -12,7 +12,7 @@ SRC_URI=""
 EGIT_REPO_URI="git://git.code.sf.net/p/offroadosm/code offroadosm-code"
 EGI_BRANCH="master"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 
 DEPEND=">=virtual/jdk-11"

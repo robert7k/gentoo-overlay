@@ -13,7 +13,7 @@ EGIT_REPO_URI="git://git.code.sf.net/p/offroadosm/code offroadosm-code"
 EGIT_COMMIT="657243746d5583eeecd08acee88596584b9c596b"
 
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
