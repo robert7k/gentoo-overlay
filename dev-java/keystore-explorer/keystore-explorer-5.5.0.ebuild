@@ -8,10 +8,10 @@ inherit desktop eutils java-pkg-2
 MY_PV=$(ver_rs 1- '')
 
 DESCRIPTION="Java key-store management tool."
-SRC_URI="mirror://sourceforge/keystore-explorer/v${PV}/kse-${MY_PV}.zip"
-HOMEPAGE="http://keystore-explorer.sourceforge.net"
+SRC_URI="https://github.com/kaikramer/${PN}/releases/download/v${PV}/kse-${MY_PV}.zip"
+HOMEPAGE="http://keystore-explorer.org https://github.com/kaikramer/keystore-explorer"
 
-LICENSE="GPL-2"
+LICENSE="GPLv3"
 IUSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
