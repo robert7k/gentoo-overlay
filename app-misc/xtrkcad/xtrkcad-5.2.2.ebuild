@@ -39,6 +39,8 @@ src_install() {
 	dolib.so ${BUILDDIR}/app/wlib/gtklib/libxtrkcad-wlib.so
 	dolib.so ${BUILDDIR}/app/cornu/libxtrkcad-cornu.so
 
+	dodoc ${S}/app/lib/Readme.md
+
 	newicon "app/lib/${PN}.png" "${PN}.png"
 	make_desktop_entry "${PN}" "XTrkCAD" "${PN}" "Graphics"
 }
