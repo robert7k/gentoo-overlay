@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake desktop
 
 DESCRIPTION="Model Railway CAD program"
 HOMEPAGE="https://sourceforge.net/projects/xtrkcad-fork/"
@@ -36,4 +36,7 @@ src_install() {
 	dolib.so ${BUILDDIR}/app/dynstring/libdynstring.so
 	dolib.so ${BUILDDIR}/app/wlib/gtklib/libxtrkcad-wlib.so
 	dolib.so ${BUILDDIR}/app/cornu/libxtrkcad-cornu.so
+
+	newicon "app/lib/${PN}.png" "${PN}.png"
+	make_desktop_entry "${PN}" "XTrkCAD" "${PN}" "Graphics"
 }
