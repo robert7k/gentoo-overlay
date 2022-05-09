@@ -31,5 +31,5 @@ src_install() {
 	java-pkg_dojar dist/OffRoad.jar
 	java-pkg_dolauncher ${PN} --jar OffRoad.jar --pwd /usr/share/${PN}
 	newicon res/offroad_icon.png ${PN}.png
-	make_desktop_entry ${PN} "OffRoad" ${PN}
+	make_desktop_entry ${PN} "OffRoad" ${PN} "Utility;Science;Geoscience"
 }
