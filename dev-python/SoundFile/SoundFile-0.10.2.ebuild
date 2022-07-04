@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{6,7,8,9,10} )
 inherit distutils-r1
 
 DESCRIPTION="SoundFile is an audio library based on libsndfile, CFFI and NumPy."
