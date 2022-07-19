@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils
+inherit desktop eutils java-pkg-2
 
 SLOT="$(ver_cut 1-2)"
 RDEPEND="virtual/jdk:11"
@@ -27,6 +27,17 @@ S="${WORKDIR}/${PN}-IU-${PV}"
 src_unpack() {
 	unpack ${A}
 	mv ${WORKDIR}/${PN}-IU-* ${WORKDIR}/${PN}-IU-${PV}
+}
+
+src_prepare() {
+	default
+
+	# See https://bugs.gentoo.org/780585
+	java-pkg-2_src_prepare
+}
+
+src_compile() {
+	true
 }
 
 src_install() {
@@ -73,4 +84,6 @@ src_install() {
 	env_file="${T}/25idea-${SLOT}"
 	echo "CONFIG_PROTECT=\"\${CONFIG_PROTECT} /etc/idea/conf\"" > "${env_file}"  || die
 	doenvd "${env_file}"
+
+	java-pkg_do_write_
 }
