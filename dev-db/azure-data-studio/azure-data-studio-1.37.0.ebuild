@@ -6,10 +6,10 @@ EAPI=8
 inherit desktop
 
 DESCRIPTION="Azure Data Studio is a cross-platform database tool for data professionals"
-HOMEPAGE="https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio"
+HOMEPAGE="https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio https://github.com/microsoft/azuredatastudio"
 SRC_URI="https://azuredatastudio-update.azurewebsites.net/1.37.0/linux-x64/stable -> ${P}.tar.gz"
 
-LICENSE=""
+LICENSE="ms-source-eula"
 SLOT="0"
 KEYWORDS="~amd64"
 
