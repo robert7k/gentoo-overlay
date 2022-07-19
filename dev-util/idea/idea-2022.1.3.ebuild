@@ -1,11 +1,11 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils versionator
+inherit desktop eutils
 
-SLOT="$(get_major_version)"
+SLOT="$(ver_cut 1-2)"
 RDEPEND="virtual/jdk:11"
 
 RESTRICT="strip mirror"
@@ -20,15 +20,13 @@ LICENSE="IntelliJ-IDEA"
 IUSE=""
 KEYWORDS="~x86 ~amd64"
 
+PATCHES="${FILESDIR}/idea-${SLOT}.sh.patch"
+
 S="${WORKDIR}/${PN}-IU-${PV}"
 
 src_unpack() {
 	unpack ${A}
 	mv ${WORKDIR}/${PN}-IU-* ${WORKDIR}/${PN}-IU-${PV}
-}
-
-src_prepare() {
-	epatch ${FILESDIR}/idea-${SLOT}.sh.patch || die
 }
 
 src_install() {
