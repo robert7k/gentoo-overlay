@@ -24,6 +24,7 @@ S="${WORKDIR}/Postman/app"
 QA_PREBUILT="
 	opt/postman-bin/Postman
 	opt/postman-bin/chrome-sandbox
+	opt/postman-bin/chrome_crashpad_handler
 	opt/postman-bin/libEGL.so
 	opt/postman-bin/libGLESv2.so
 	opt/postman-bin/libffmpeg.so
