@@ -1,0 +1,4 @@
+IDEA_VM_OPTIONS="/etc/idea/idea-2022.2.vmoptions"
+IDEA_PROPERTIES="/etc/idea/idea-2022.2.properties"
+declare $(gjl --package=idea-2022.2 --get-vm | xargs)
+IDEA_JDK=`java-config-2 --select-vm $gjl_vm -O`
