@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit cmake-utils
+EAPI=7
+inherit cmake
 
 DESCRIPTION="Cross-platform Skype history exporter written in C++"
 HOMEPAGE="https://github.com/Temptin/SkypeExport"
@@ -25,7 +25,7 @@ CMAKE_BUILD_TYPE="Release"
 S="${WORKDIR}/${P}/src/${PN}/_gccbuild/linux"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	mkdir ${S}/release
 }
@@ -34,7 +34,5 @@ src_install(){
 	make
 
 	mkdir -p ${D}usr/bin
-#	cp ${WORKDIR}/${P}_build/${PN} ${D}usr/bin/${PN}
 	dobin ${WORKDIR}/${P}_build/${PN}
-#	dobin /usr/bin/${PN}
 }
