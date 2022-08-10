@@ -27,6 +27,8 @@ S="${WORKDIR}/${P}/src/${PN}/_gccbuild/linux"
 src_prepare() {
 	cmake_src_prepare
 
+	sed -i '24 a #include <boost/next_prior.hpp>' "${WORKDIR}/${P}/src/SkypeExport/model/skypeparser.h"
+
 	mkdir ${S}/release
 }
 
