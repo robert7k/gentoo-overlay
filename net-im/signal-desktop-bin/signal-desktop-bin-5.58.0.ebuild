@@ -22,29 +22,60 @@ RESTRICT="splitdebug"
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
 	app-accessibility/at-spi2-core:2
+	app-arch/bzip2
+	app-crypt/libmd
 	dev-libs/atk
 	dev-libs/expat
+	dev-libs/fribidi
 	dev-libs/glib:2
+	dev-libs/gmp
+	dev-libs/libbsd
+	dev-libs/libffi
+	dev-libs/libpcre
+	dev-libs/libtasn1
+	dev-libs/libunistring
+	dev-libs/nettle
 	dev-libs/nspr
 	dev-libs/nss
+	dev-libs/wayland
+	media-gfx/graphite2
 	media-libs/alsa-lib
+	media-libs/fontconfig
+	media-libs/freetype
+	media-libs/harfbuzz
+	media-libs/libepoxy
+	media-libs/libglvnd
+	media-libs/libpng
+	media-libs/libjpeg-turbo
 	media-libs/mesa[X(+)]
+	net-dns/avahi
+	net-libs/gnutls
+	net-dns/libidn2
 	net-print/cups
 	sys-apps/dbus[X]
+	sys-apps/util-linux
+	sys-libs/zlib
 	x11-libs/gdk-pixbuf:2
 	x11-libs/cairo
 	x11-libs/gtk+:3[X]
 	x11-libs/libdrm
 	x11-libs/libX11
+	x11-libs/libXau
 	x11-libs/libxcb
+	x11-libs/libXcursor
+	x11-libs/libXdmcp
 	x11-libs/libxkbcommon
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
+	x11-libs/libXi
+	x11-libs/libXinerama
 	x11-libs/libXrandr
+	x11-libs/libXrender
 	x11-libs/libxshmfence
 	x11-libs/pango
+	x11-libs/pixman
 	sound? (
 		|| (
 			media-sound/pulseaudio
