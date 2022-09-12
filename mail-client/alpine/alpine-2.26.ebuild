@@ -6,15 +6,15 @@ EAPI=8
 inherit autotools optfeature toolchain-funcs
 
 DESCRIPTION="An easy to use text-based based mail and news client"
-HOMEPAGE="https://alpine.x10host.com/alpine/ https://repo.or.cz/alpine.git/"
+HOMEPAGE="https://alpineapp.email/ https://repo.or.cz/alpine.git/"
 CHAPPA_PATCH_NAME="${P}-chappa-5.patch"
-SRC_URI="https://alpine.x10host.com/alpine/release/src/${P}.tar.xz
-	chappa? ( https://alpine.x10host.com/alpine/patches/${P}/all.patch.gz -> ${CHAPPA_PATCH_NAME}.gz ) "
+SRC_URI="https://alpineapp.email/alpine/release/src/${P}.tar.xz
+	chappa? ( https://alpineapp.email/alpine/patches/${P}/all.patch.gz -> ${CHAPPA_PATCH_NAME}.gz ) "
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+chappa ipv6 kerberos ldap nls onlyalpine passfile smime ssl threads"
+IUSE="+chappa ipv6 kerberos ldap nls onlyalpine passfile smime ssl"
 
 DEPEND="sys-libs/ncurses:=
 	virtual/libcrypt:=
@@ -37,13 +37,13 @@ src_prepare() {
 src_configure() {
 	myconf=(
 		--without-tcl
+		--with-pthread
 		--with-system-pinerc="${EPREFIX}"/etc/pine.conf
 		--with-system-fixed-pinerc="${EPREFIX}"/etc/pine.conf.fixed
 		$(use_with ldap)
 		$(use_with ssl)
 		$(use_with passfile passfile .pinepwd)
 		$(use_with kerberos krb5)
-		$(use_with threads pthread)
 		$(use_enable nls)
 		$(use_with ipv6)
 		$(use_with smime)
