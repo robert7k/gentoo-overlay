@@ -45,7 +45,7 @@ src_prepare() {
 		if use "l10n_${lang}" || use l10n_de; then
 			MYSPELL_DICT+=( "${mylinguas}.aff" "${mylinguas}.dic" )
 			MYSPELL_HYPH+=( "hyph_${mylinguas}.dic" )
-			MYSPELL_THES+=( "th_${mylinguas}_v2.dat" "th_${mylinguas}_v2.idx" ) 
+			MYSPELL_THES+=( "th_${mylinguas}_v2.dat" "th_${mylinguas}_v2.idx" )
 		fi
 	done
 
