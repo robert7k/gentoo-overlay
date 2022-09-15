@@ -18,16 +18,16 @@ SRC_URI="
 		https://extensions.libreoffice.org/extensions/german-de-at-frami-dictionaries/$(ver_rs 1 -)/@@download/file/dict-de_AT-frami_${MY_PV}.oxt
 		https://extensions.libreoffice.org/extensions/german-de-ch-frami-dictionaries/$(ver_rs 1 -)/@@download/file/dict-de_CH-frami_${MY_PV}.oxt
 		https://extensions.libreoffice.org/extensions/german-de-de-frami-dictionaries/${MY_PV}/@@download/file/dict-de_DE-frami_${MY_PV}.oxt )
-	l10n_de_AT? ( https://extensions.libreoffice.org/extensions/german-de-at-frami-dictionaries/$(ver_rs 1 -)/@@download/file/dict-de_AT-frami_${MY_PV}.oxt )
-	l10n_de_CH? ( https://extensions.libreoffice.org/extensions/german-de-ch-frami-dictionaries/$(ver_rs 1 -)/@@download/file/dict-de_CH-frami_${MY_PV}.oxt )
-	l10n_de_DE? ( https://extensions.libreoffice.org/extensions/german-de-de-frami-dictionaries/${MY_PV}/@@download/file/dict-de_DE-frami_${MY_PV}.oxt )
+	l10n_de-AT? ( https://extensions.libreoffice.org/extensions/german-de-at-frami-dictionaries/$(ver_rs 1 -)/@@download/file/dict-de_AT-frami_${MY_PV}.oxt )
+	l10n_de-CH? ( https://extensions.libreoffice.org/extensions/german-de-ch-frami-dictionaries/$(ver_rs 1 -)/@@download/file/dict-de_CH-frami_${MY_PV}.oxt )
+	l10n_de-DE? ( https://extensions.libreoffice.org/extensions/german-de-de-frami-dictionaries/${MY_PV}/@@download/file/dict-de_DE-frami_${MY_PV}.oxt )
 "
 
 LICENSE="GPL-3 GPL-2 LGPL-3+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-PLOCALES=( "de_AT" "de_CH" "de_DE" )
+PLOCALES=( "de-AT" "de-CH" "de-DE" )
 IUSE+="+l10n_de ${PLOCALES[@]/#/l10n_}"
 REQUIRED_USE="|| ( l10n_de ${PLOCALES[@]/#/l10n_} )"
 
