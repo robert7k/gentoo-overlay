@@ -14,7 +14,7 @@ LICENSE="Apache-2.0"
 
 IUSE="firebird informix mssql mysql oracle postgres sybase"
 
-DEPEND=">=virtual/jdk-1.8:*"
+DEPEND=">=virtual/jdk-11:*"
 RDEPEND="
 	${DEPEND}
 	dev-java/log4j
@@ -68,6 +68,6 @@ src_install() {
 
 	java-pkg_dolauncher "${PN}-console" --main workbench.console.SQLConsole --java_args "-Djava.awt.headless=true -Dvisualvm.display.name=SQLWorkbench -Xmx512m" --pkg_args "\${@}" --pwd "${install_dir}"
 	java-pkg_dolauncher "${PN}" --main workbench.WbStarter --java_args "-Dvisualvm.display.name=SQLWorkbench -Xmx512m" --pkg_args "\${@}" --pwd "${install_dir}"
-	
-    make_desktop_entry ${PN} ${PN} ${PN} "Development"
+
+	make_desktop_entry ${PN} ${PN} ${PN} "Development"
 }
