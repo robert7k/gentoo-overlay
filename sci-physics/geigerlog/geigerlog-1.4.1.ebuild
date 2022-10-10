@@ -46,7 +46,7 @@ src_prepare() {
 }
 
 src_install() {
-	MANUAL="${S}/GeigerLog-Manual-v${PV}.pdf"
+	MANUAL="${S}/GeigerLog-Manual-v1.4.0.pdf"
 	dodoc ${MANUAL}
 	rm ${MANUAL}
 	rm -r "${S}/data"
