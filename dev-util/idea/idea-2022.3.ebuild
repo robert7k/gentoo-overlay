@@ -7,7 +7,10 @@ inherit desktop eutils java-pkg-2
 
 SLOT="$(ver_cut 1-2)"
 RDEPEND="
+	sys-apps/util-linux
 	sys-libs/libselinux
+	sys-libs/libxcrypt
+	sys-libs/pam
 	sys-process/audit"
 
 RESTRICT="strip mirror"
@@ -68,15 +71,19 @@ src_install() {
 
 	ln -s /etc/idea/idea-${SLOT}.properties bin/idea.properties
 
-	rm -rf plugins/tfsIntegration/lib/native/linux/ppc
-	rm -rf plugins/tfsIntegration/lib/native/solaris
-
 	# idea itself
 	insinto "${dir}"
 	doins -r *
 
-	fperms 755 "${dir}/bin/${PN}.sh"
+	fperms 755 "${dir}/bin/repair"
+	fperms 755 "${dir}/bin/ltedit.sh"
+	fperms 755 "${dir}/bin/idea.sh"
 	fperms 755 "${dir}/bin/fsnotifier"
+	fperms 755 "${dir}/bin/inspect.sh"
+	fperms 755 "${dir}/bin/restart.py"
+	fperms 755 "${dir}/bin/remote-dev-server.sh"
+	fperms 755 "${dir}/bin/format.sh"
+
 	fperms -R 755 "${dir}/jbr/bin/"
 
 	newicon "bin/${PN}.png" "${exe}.png"
