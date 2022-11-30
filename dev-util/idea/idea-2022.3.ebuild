@@ -85,6 +85,10 @@ src_install() {
 	fperms 755 "${dir}/bin/format.sh"
 
 	fperms -R 755 "${dir}/jbr/bin/"
+	fperms -R 755 "${dir}/jbr/lib/chrome-sandbox"
+	fperms -R 755 "${dir}/jbr/lib/jcef_helper"
+	fperms -R 755 "${dir}/jbr/lib/jexec"
+	fperms -R 755 "${dir}/jbr/lib/jspawnhelper"
 
 	newicon "bin/${PN}.png" "${exe}.png"
 	make_wrapper "${exe}" "/opt/${P}/bin/${PN}.sh"
