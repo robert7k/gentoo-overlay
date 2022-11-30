@@ -77,6 +77,7 @@ src_install() {
 
 	fperms 755 "${dir}/bin/${PN}.sh"
 	fperms 755 "${dir}/bin/fsnotifier"
+	fperms -R 755 "${dir}/jbr/bin/"
 
 	newicon "bin/${PN}.png" "${exe}.png"
 	make_wrapper "${exe}" "/opt/${P}/bin/${PN}.sh"
@@ -86,7 +87,5 @@ src_install() {
 	env_file="${T}/25idea-${SLOT}"
 	echo "CONFIG_PROTECT=\"\${CONFIG_PROTECT} /etc/idea/conf\"" > "${env_file}"  || die
 	doenvd "${env_file}"
-
-	java-pkg_do_write_
 }
 
