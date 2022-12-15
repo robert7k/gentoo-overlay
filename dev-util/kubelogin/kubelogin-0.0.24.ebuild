@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Azure/${PN}/archive/refs/tags/v${PV}.tar.gz
 	https://gitlab.com/api/v4/projects/35204985/packages/generic/${PN}/${PV}/${P}-deps.tar.bz"
 #S="${WORKDIR}"/cli-${PV}
 
-LICENSE="Apache-2.0 BSD BSD-2 ISC LGPL-3 MIT MPL-2.0"
+LICENSE="Apache-2.0 BSD-2 BSD-3 ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
