@@ -21,7 +21,6 @@ RESTRICT="splitdebug"
 
 RDEPEND="
 	app-accessibility/at-spi2-core:2
-	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
