@@ -41,6 +41,8 @@ src_install() {
 	exeinto /opt/${PN}
 	doexe Postman
 	doexe postman
+	doexe chrome_crashpad_handler
+	doexe chrome-sandbox
 
 	dosym /opt/${PN}/Postman /usr/bin/postman
 
