@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	eapply_user
 
-	sed -e "s:#WEBPLATFORM = webengine:WEBPLATFORM = webengine:" \
+	sed -e "s:WEBPLATFORM = webkit:WEBPLATFORM = webengine:" \
 		-i upplay.pro
 }
 
