@@ -7,9 +7,10 @@ inherit desktop eutils java-pkg-2
 
 SLOT="$(ver_cut 1-2)"
 RDEPEND="
+	dev-util/lldb:=
 	sys-apps/util-linux
 	sys-libs/libselinux
-	sys-libs/libxcrypt
+	sys-libs/libxcrypt:=
 	sys-libs/pam
 	sys-process/audit"
 
