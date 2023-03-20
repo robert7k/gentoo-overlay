@@ -21,6 +21,10 @@ DEPEND="
 	dev-perl/JSON-XS"
 RDEPEND="${DEPEND}"
 
+src_compile() {
+	true
+}
+
 src_install() {
 	dodir /usr/share/${PN}
 	insinto /usr/share/${PN}
