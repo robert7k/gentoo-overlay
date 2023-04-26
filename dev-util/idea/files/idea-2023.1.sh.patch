@@ -4,7 +4,7 @@
  
  # shellcheck disable=SC2034
  GREP_OPTIONS=''
-+. /etc/conf.d/idea-2022.3
++. /etc/conf.d/idea-2023.1
  OS_TYPE=$(uname -s)
  OS_ARCH=$(uname -m)
  
