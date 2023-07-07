@@ -20,7 +20,7 @@ IUSE="+sound"
 RESTRICT="splitdebug"
 
 RDEPEND="
-	app-accessibility/at-spi2-core:2
+	>=app-accessibility/at-spi2-core-2.46.0:2
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
@@ -43,7 +43,7 @@ RDEPEND="
 	x11-libs/pango
 	sound? (
 		|| (
-			media-sound/pulseaudio
+			media-libs/libpulse
 			media-sound/apulse
 		)
 	)
