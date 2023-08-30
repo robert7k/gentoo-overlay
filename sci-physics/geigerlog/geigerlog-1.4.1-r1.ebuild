@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{10,11} )
 PYTHON_REQ_USE="sqlite"
 
-inherit desktop eutils python-single-r1
+inherit desktop python-single-r1
 
 DESCRIPTION="A Python based GUI program to work with GQ Electronic's Geiger counters"
 HOMEPAGE="https://sourceforge.net/projects/geigerlog/"
