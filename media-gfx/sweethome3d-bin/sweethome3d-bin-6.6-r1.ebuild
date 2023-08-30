@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop eutils java-pkg-2
+inherit desktop java-pkg-2
 
 MY_PN="SweetHome3D"
 
