@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils java-pkg-2
+inherit desktop java-pkg-2
 
 SLOT="$(ver_cut 1-2)"
 RDEPEND="virtual/jdk:11"
