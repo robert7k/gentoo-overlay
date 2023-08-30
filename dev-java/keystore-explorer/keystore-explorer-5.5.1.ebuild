@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils java-pkg-2
+inherit desktop java-pkg-2
 
 MY_PV=$(ver_rs 1- '')
 
