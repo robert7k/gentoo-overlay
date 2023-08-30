@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils java-pkg-2
+inherit desktop java-pkg-2
 
 DESCRIPTION="Fake SMTP Server with GUI for testing emails in applications easily."
 HOMEPAGE="http://nilhcem.github.io/FakeSMTP/"
