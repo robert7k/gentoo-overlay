@@ -24,15 +24,24 @@ SRC_URI="https://download.jetbrains.com/${PN}/${PN}IU-${PV}.tar.gz"
 
 LICENSE="IntelliJ-IDEA"
 IUSE=""
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 
 PATCHES="${FILESDIR}/idea-${SLOT}.sh.patch"
 
 S="${WORKDIR}/${PN}-IU-${PV}"
 
+QA_PREBUILT="
+	/opt/${P}/bin/fsnotifier
+	/opt/${P}/bin/libdbm.so
+	/opt/${P}/jbr/bin/*
+	/opt/${P}/jbr/lib/*
+	/opt/${P}/lib/*
+	/opt/${P}/plugins/*
+	"
+
 src_unpack() {
 	unpack ${A}
-	mv ${WORKDIR}/${PN}-IU-* ${WORKDIR}/${PN}-IU-${PV}
+	mv "${WORKDIR}"/${PN}-IU-* "${WORKDIR}/${PN}-IU-${PV}"
 }
 
 src_prepare() {
@@ -100,4 +109,3 @@ src_install() {
 	echo "CONFIG_PROTECT=\"\${CONFIG_PROTECT} /etc/idea/conf\"" > "${env_file}"  || die
 	doenvd "${env_file}"
 }
-
