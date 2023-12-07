@@ -33,6 +33,7 @@ S="${WORKDIR}/${PN}-IU-${PV}"
 QA_PREBUILT="
 	/opt/${P}/bin/fsnotifier
 	/opt/${P}/bin/libdbm.so
+	/opt/${P}/bin/restarter
 	/opt/${P}/jbr/bin/*
 	/opt/${P}/jbr/lib/*
 	/opt/${P}/lib/*
@@ -90,8 +91,8 @@ src_install() {
 	fperms 755 "${dir}/bin/idea.sh"
 	fperms 755 "${dir}/bin/fsnotifier"
 	fperms 755 "${dir}/bin/inspect.sh"
-	fperms 755 "${dir}/bin/restart.py"
 	fperms 755 "${dir}/bin/remote-dev-server.sh"
+	fperms 755 "${dir}/bin/restarter"
 	fperms 755 "${dir}/bin/format.sh"
 
 	fperms -R 755 "${dir}/jbr/bin/"
