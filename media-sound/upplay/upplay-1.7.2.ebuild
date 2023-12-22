@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=7
+EAPI=8
 inherit qmake-utils
 
 DESCRIPTION="A Qt-based UPnP audio Control point"
@@ -21,7 +20,7 @@ DEPEND="dev-libs/jsoncpp:=
 		dev-qt/qtwebengine:5
 		dev-qt/qtwidgets:5
 		media-libs/qtmpris
-		>=net-libs/libupnpp-0.19.0"
+		>=net-libs/libupnpp-0.25.0"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
