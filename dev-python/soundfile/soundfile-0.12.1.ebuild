@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="virtual/python-cffi
+DEPEND="dev-python/cffi
 	dev-python/numpy
 	media-libs/libsndfile"
 RDEPEND="${DEPEND}"

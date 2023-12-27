@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="virtual/python-cffi[${PYTHON_USEDEP}]
+DEPEND="dev-python/cffi[${PYTHON_USEDEP}]
 	media-libs/portaudio"
 RDEPEND="${DEPEND}"
 BDEPEND=""
