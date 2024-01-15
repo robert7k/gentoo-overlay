@@ -15,9 +15,9 @@ IUSE=""
 
 DEPEND="
 	>=dev-libs/boost-1.57
-	dev-util/cmake
+	dev-build/cmake
 	sys-devel/gcc
-	sys-devel/make"
+	dev-build/make"
 RDEPEND="${DEPEND}"
 
 CMAKE_BUILD_TYPE="Release"
