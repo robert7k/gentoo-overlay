@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ DESCRIPTION="Scale and tile PDF images/pages to print on multiple pages."
 HOMEPAGE="http://pythonhosted.org/pdftools.pdfposter/ https://gitlab.com/pdftools/pdfposter"
 EGIT_REPO_URI="https://gitlab.com/pdftools/pdfposter"
 EGIT_COMMIT="v${PV}"
-PYTHON_COMPAT=( python3_{10,11} )
+PYTHON_COMPAT=( python3_{10,11,12} )
 
 inherit git-r3 distutils-r1
 
