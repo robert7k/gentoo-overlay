@@ -91,6 +91,10 @@ COMMON_DEPEND="
 		>=dev-qt/qtcore-${QTMIN}:5
 		>=dev-qt/qtopengl-${QTMIN}:5
 		media-video/ffmpeg:=
+		|| (
+			media-libs/portaudio
+			media-sound/pulseaudio
+		)
 	)
 	panorama? ( >=kde-frameworks/threadweaver-${KFMIN}:5 )
 	scanner? ( >=kde-apps/libksane-19.04.3:5 )
