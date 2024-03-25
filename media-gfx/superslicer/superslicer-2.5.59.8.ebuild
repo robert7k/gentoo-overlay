@@ -41,7 +41,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	media-libs/qhull:=
 	sci-libs/nlopt
-	sci-libs/opencascade:=
+	=sci-libs/opencascade-7.7*:=
 	>=sci-mathematics/cgal-5.0:=
 	sys-apps/dbus
 	sys-libs/zlib:=
