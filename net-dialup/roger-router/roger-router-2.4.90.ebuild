@@ -6,7 +6,7 @@ EAPI=7
 inherit meson gnome2-utils xdg-utils
 
 DESCRIPTION="A graphical user interface for Fritz!Box routers."
-HOMEPAGE="https://tabos.gitlab.io/project/rogerrouter/"
+HOMEPAGE="https://tabos.gitlab.io/projects/rogerrouter/"
 
 inherit git-r3
 EGIT_REPO_URI="https://gitlab.com/tabos/rogerrouter.git"
