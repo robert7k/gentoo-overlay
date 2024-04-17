@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2024 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils java-pkg-2 java-ant-2
+EAPI=7
+inherit desktop java-pkg-2 java-ant-2
 
 DESCRIPTION="Free, DBMS-independent, cross-platform SQL query tool."
 HOMEPAGE="http://www.sql-workbench.net/"
@@ -38,11 +38,6 @@ src_install() {
 	insinto "${install_dir}";
 
 	java-pkg_dojar ${PN}.jar;
-
-# 	for jar in libs/*/*.jar; do
-# 		java-pkg_dojar "${jar}"
-# 		java-pkg_regjar "${D}${install_dir}/lib/$(basename ${jar})"
-# 	done
 
 	for backend in ${IUSE}; do
 		use "${backend}" && {
