@@ -5,12 +5,12 @@ EAPI=8
 
 inherit go-module
 
-EGO_PN="github.com/cg2v/gdrive"
+EGO_PN="github.com/msfjarvis/gdrive"
 
 DESCRIPTION="Command line utility for interacting with Google Drive"
-HOMEPAGE="https://github.com/cg2v/gdrive"
-SRC_URI="https://github.com/cg2v/gdrive/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	https://gitlab.com/api/v4/projects/35204985/packages/generic/${PN}/${PV}/${P}-deps.tar.xz"
+HOMEPAGE="https://github.com/msfjarvis/gdrive"
+SRC_URI="https://github.com/msfjarvis//gdrive/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	https://gitlab.com/api/v4/projects/35204985/packages/generic/${PN}/${PV}/${P}-deps.tar.bz"
 
 LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"
