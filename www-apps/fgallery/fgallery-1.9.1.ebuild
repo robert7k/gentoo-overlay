@@ -17,7 +17,7 @@ DEPEND="
 	media-gfx/imagemagick[tiff,jpeg,lcms]
 	media-libs/exiftool
 	app-arch/zip
-	>=dev-lang/perl-5.14[ithreads]
+	>=dev-lang/perl-5.14[perl_features_ithreads]
 	dev-perl/JSON-XS"
 RDEPEND="${DEPEND}"
 
