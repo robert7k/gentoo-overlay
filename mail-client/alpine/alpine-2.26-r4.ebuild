@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools optfeature toolchain-funcs
+inherit autotools flag-o-matic optfeature toolchain-funcs
 
 DESCRIPTION="An easy to use text-based based mail and news client"
 HOMEPAGE="https://alpineapp.email/ https://repo.or.cz/alpine.git/"
@@ -29,6 +29,11 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	default
 	use chappa && eapply "${WORKDIR}/${CHAPPA_PATCH_NAME}"
+	if use chappa; then
+		eapply "${FILESDIR}/${PN}-2.26-fix-clang16-build.patch"
+	else
+		eapply "${FILESDIR}/${PN}-2.26-fix-clang16-build-no-chappa.patch"
+	fi
 	eautoreconf
 	tc-export CC RANLIB AR
 	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
@@ -62,11 +67,25 @@ src_configure() {
 			--with-ssl-certs-dir="${EPREFIX}"/etc/ssl/certs
 		)
 	fi
+
+	# Bug 935343; see imap/docs/bugs.txt
+	if use ipv6; then
+		sed -i "s/IP=4/IP=6/" imap/Makefile || die
+	fi
+
+	# problems with strict prototypes, not easily patched #870766
+	append-cflags -Wno-error=strict-prototypes
+
+	# problems with incompatible pointer types, not easily patched #920365
+	append-cflags -Wno-error=incompatible-pointer-types
+
 	econf "${myconf[@]}"
 }
 
 src_compile() {
-	emake -j1 AR="$(tc-getAR)"
+	# the bundled c-client lib stumbles with both -j>1 and --shuffle #888709
+	emake -j1 --shuffle=none AR="$(tc-getAR)" c-client
+	emake AR="$(tc-getAR)"
 }
 
 src_install() {
