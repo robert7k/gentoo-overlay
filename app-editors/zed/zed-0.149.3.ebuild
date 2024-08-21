@@ -1119,7 +1119,6 @@ pkg_setup() {
 	strip-unsupported-flags
 	# flags from upstream
 	export RUSTFLAGS="${RUSTFLAGS} -C symbol-mangling-version=v0 --cfg tokio_unstable -C link-arg=-fuse-ld=mold -C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib"
-	export RUSTFLAGS="${RUSTFLAGS} -C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib"
 	# linking error with llvm-18
 	export RUSTFLAGS="${RUSTFLAGS} -C link-args=-Wl,-z,nostart-stop-gc"
 }
@@ -1139,8 +1138,6 @@ src_prepare() {
 	sed -e "s#${PF_GIT}#${PF_PATH}#" \
 		-e "s#${TS_GIT}#${TS_PATH}#" \
 		-i "${S}/Cargo.toml" || die "Cargo fetch workaround failed"
-	
-	rm ${S}/.cargo/config.toml
 }
 
 src_configure() {
