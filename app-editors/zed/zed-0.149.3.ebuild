@@ -1127,10 +1127,6 @@ src_prepare() {
 	default
 
 	# Cargo offline fetch workaround
-	local PF_COMMIT="4968e819c0d9b015437ffc694511e175801a17c7"
-	local PF_GIT="git = \"https://github.com/servo/pathfinder.git\", rev = \"${PF_COMMIT}\""
-	local PF_PATH="path = \"${WORKDIR}/pathfinder-${PF_COMMIT}/simd\""
-
 	local TS_COMMIT="7f4a57817d58a2f134fe863674acad6bbf007228"
 	local TS_GIT="git = \"https://github.com/tree-sitter/tree-sitter\", rev = \"${TS_COMMIT}\""
 	local TS_PATH="path = \"${WORKDIR}/tree-sitter-${TS_COMMIT}/lib\""
