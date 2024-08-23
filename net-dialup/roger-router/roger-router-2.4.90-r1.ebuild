@@ -16,14 +16,27 @@ LICENSE="GPL-2"
 SLOT="0"
 
 RDEPEND="
-	x11-libs/gtk+:3
-	net-libs/libsoup:2.4
-	media-libs/tiff
-	dev-libs/libappindicator:3
+	app-text/ghostscript-gpl:=
 	app-text/libebook
+	dev-libs/glib:2
+	gui-libs/libhandy:1
+	media-libs/tiff:=
+	net-libs/libsoup:2.4
 	dev-libs/libgdata
-	net-libs/librm"
+	net-libs/librm
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:3
+	x11-libs/pango"
 DEPEND="${RDEPEND}"
+
+src_configure() {
+	local emesonargs=(
+        $(meson_use evolution)
+    )
+
+	meson_src_configure
+}
 
 pkg_postinst() {
 	gnome2_schemas_update
