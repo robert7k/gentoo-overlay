@@ -1131,8 +1131,7 @@ src_prepare() {
 	local TS_GIT="git = \"https://github.com/tree-sitter/tree-sitter\", rev = \"${TS_COMMIT}\""
 	local TS_PATH="path = \"${WORKDIR}/tree-sitter-${TS_COMMIT}/lib\""
 
-	sed -e "s#${PF_GIT}#${PF_PATH}#" \
-		-e "s#${TS_GIT}#${TS_PATH}#" \
+	sed -e "s#${TS_GIT}#${TS_PATH}#" \
 		-i "${S}/Cargo.toml" || die "Cargo fetch workaround failed"
 }
 
