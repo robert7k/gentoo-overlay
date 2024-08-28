@@ -1072,7 +1072,6 @@ SRC_URI="
 LICENSE="0BSD AGPL-3+ Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 CC0-1.0 GPL-3+ ISC LGPL-3 MIT MPL-2.0 Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+lto"
 
 DEPEND="
 	app-arch/zstd:=
@@ -1100,20 +1099,11 @@ BDEPEND="
 "
 
 pkg_setup() {
-	if use lto; then
-		# NOTE: upstream sets to thinlto by default
-		if tc-is-gcc; then
-			einfo "Enforcing lto for CC is Gcc"
-			export CARGO_PROFILE_RELEASE_LTO="true"
-		elif tc-is-clang; then
-			einfo "Enforcing thinlto for CC is Clang"
-			export CARGO_PROFILE_RELEASE_LTO="thin"
-		fi
-	else
-		export CARGO_PROFILE_RELEASE_LTO="false"
-		filter-lto
+	if tc-is-gcc; then
+		export CARGO_PROFILE_RELEASE_LTO="true"
+	elif tc-is-clang; then
+		export CARGO_PROFILE_RELEASE_LTO="thin"
 	fi
-	# In case of compiler switch with unsupported flags
 	strip-unsupported-flags
 	# flags from upstream
 	export RUSTFLAGS="${RUSTFLAGS} -C symbol-mangling-version=v0 --cfg tokio_unstable -C link-arg=-fuse-ld=mold -C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib"
@@ -1138,7 +1128,6 @@ src_configure() {
 }
 
 src_compile() {
-	# Set RELEASE_VERSION so it's compiled into GPUI and it knows about the version
 	export RELEASE_VERSION="${PV}"
 	export ZED_UPDATE_EXPLANATION='Updates are handled by portage'
 	cargo_src_compile --package zed --package cli
@@ -1146,8 +1135,6 @@ src_compile() {
 
 src_install() {
 	newbin $(cargo_target_dir)/cli zed
-	# hard-coded in crates/cli/src/main.rs
-	# libexec/zed-editor
 	exeinto "/usr/libexec"
 	newexe $(cargo_target_dir)/zed zed-editor
 
