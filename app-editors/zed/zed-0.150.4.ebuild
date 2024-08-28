@@ -1075,8 +1075,9 @@ KEYWORDS="~amd64"
 IUSE="+lto"
 
 DEPEND="
+	app-arch/zstd:=
 	dev-db/sqlite:3
-	dev-libs/libgit2
+	dev-libs/libgit2:=
 	dev-libs/mimalloc
 	dev-libs/openssl:0/3
 	dev-libs/wayland
@@ -1085,11 +1086,8 @@ DEPEND="
 	dev-util/vulkan-tools
 	media-libs/alsa-lib
 	media-libs/fontconfig
-	media-libs/freetype
 	media-libs/vulkan-loader
 	net-misc/curl
-	sys-libs/zlib
-	x11-libs/libXau
 	x11-libs/libxcb
 	x11-libs/libxkbcommon
 "
