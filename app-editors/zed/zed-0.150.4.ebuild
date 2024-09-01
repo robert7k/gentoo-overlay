@@ -1061,9 +1061,11 @@ declare -A GIT_CRATES=(
 	[xkbcommon]='https://github.com/ConradIrwin/xkbcommon-rs;fcbb4612185cc129ceeff51d22f7fb51810a03b2;xkbcommon-rs-%commit%'
 )
 
-inherit cargo desktop flag-o-matic toolchain-funcs xdg
+LLVM_COMPAT=( 18 )
 
-DESCRIPTION="The fast, collaborative code editor."
+inherit cargo check-reqs desktop flag-o-matic llvm-r1 toolchain-funcs xdg
+
+DESCRIPTION="The fast, collaborative code editor"
 HOMEPAGE="https://zed.dev https://github.com/zed-industries/zed"
 SRC_URI="
 	https://github.com/zed-industries/zed/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
@@ -1072,6 +1074,7 @@ SRC_URI="
 LICENSE="0BSD AGPL-3+ Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 CC0-1.0 GPL-3+ ISC LGPL-3 MIT MPL-2.0 Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
+CHECKREQS_DISK_BUILD="8G"
 
 DEPEND="
 	app-arch/zstd:=
@@ -1085,10 +1088,11 @@ DEPEND="
 	dev-util/vulkan-tools
 	media-libs/alsa-lib
 	media-libs/fontconfig
-	media-libs/vulkan-loader
+	media-libs/vulkan-loader[X]
 	net-misc/curl
-	x11-libs/libxcb
-	x11-libs/libxkbcommon
+	sys-libs/zlib
+	x11-libs/libxcb:=
+	x11-libs/libxkbcommon[X]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
@@ -1096,7 +1100,13 @@ BDEPEND="
 	dev-util/vulkan-headers
 	sys-devel/gettext
 	sys-devel/mold
+	$(llvm_gen_dep '
+		sys-devel/clang:${LLVM_SLOT}=
+		sys-devel/llvm:${LLVM_SLOT}=
+	')
 "
+
+QA_FLAGS_IGNORED="usr/bin/zed"
 
 pkg_setup() {
 	if tc-is-gcc; then
@@ -1141,4 +1151,11 @@ src_install() {
 	newicon -s 512 crates/zed/resources/app-icon.png zed.png
 	newicon -s 1024 crates/zed/resources/app-icon@2x.png zed.png
 	make_desktop_entry /usr/bin/zed Zed zed.png "TextEditor;Development;IDE"
+}
+
+src_test () {
+	mkdir -p "${HOME}/.config/zed" || die
+	mkdir -p "${HOME}/.local/share/zed/logs/" || die
+
+	cargo_src_test
 }
