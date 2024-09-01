@@ -1086,6 +1086,7 @@ DEPEND="
 	dev-libs/wayland-protocols
 	dev-util/wayland-scanner
 	dev-util/vulkan-tools
+	media-fonts/noto
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/vulkan-loader[X]
