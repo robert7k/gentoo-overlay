@@ -1157,5 +1157,5 @@ src_test () {
 	mkdir -p "${HOME}/.config/zed" || die
 	mkdir -p "${HOME}/.local/share/zed/logs/" || die
 
-	cargo_src_test
+	SHELL=/usr/bin/sh RUST_BACKTRACE=full cargo_src_test -vv
 }
