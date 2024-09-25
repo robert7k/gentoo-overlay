@@ -29,7 +29,7 @@ CRATES="
 	anstyle-wincon@3.0.4
 	anstyle@1.0.8
 	any_vec@0.14.0
-	anyhow@1.0.86
+	anyhow@1.0.89
 	approx@0.5.1
 	arbitrary@1.3.2
 	arg_enum_proc_macro@0.3.4
@@ -69,6 +69,7 @@ CRATES="
 	async-stripe@0.39.1
 	async-tar@0.5.0
 	async-task@4.7.1
+	async-tls@0.12.0
 	async-trait@0.1.81
 	async-tungstenite@0.23.0
 	async-watch@0.3.1
@@ -122,6 +123,7 @@ CRATES="
 	bitflags@2.6.0
 	bitstream-io@2.5.3
 	bitvec@1.0.1
+	blake3@1.5.4
 	block-buffer@0.10.4
 	block-padding@0.3.3
 	block@0.1.6
@@ -193,6 +195,7 @@ CRATES="
 	const-oid@0.9.6
 	const-random-macro@0.1.16
 	const-random@0.1.18
+	constant_time_eq@0.3.1
 	convert_case@0.4.0
 	convert_case@0.6.0
 	core-foundation-sys@0.8.7
@@ -209,16 +212,17 @@ CRATES="
 	cpal@0.15.3
 	cpp_demangle@0.4.4
 	cpufeatures@0.2.13
-	cranelift-bforest@0.108.1
-	cranelift-codegen-meta@0.108.1
-	cranelift-codegen-shared@0.108.1
-	cranelift-codegen@0.108.1
-	cranelift-control@0.108.1
-	cranelift-entity@0.108.1
-	cranelift-frontend@0.108.1
-	cranelift-isle@0.108.1
-	cranelift-native@0.108.1
-	cranelift-wasm@0.108.1
+	cranelift-bforest@0.111.0
+	cranelift-bitset@0.111.0
+	cranelift-codegen-meta@0.111.0
+	cranelift-codegen-shared@0.111.0
+	cranelift-codegen@0.111.0
+	cranelift-control@0.111.0
+	cranelift-entity@0.111.0
+	cranelift-frontend@0.111.0
+	cranelift-isle@0.111.0
+	cranelift-native@0.111.0
+	cranelift-wasm@0.111.0
 	crc-catalog@2.4.0
 	crc32c@0.6.8
 	crc32fast@1.4.2
@@ -349,7 +353,6 @@ CRATES="
 	getrandom@0.1.16
 	getrandom@0.2.15
 	gif@0.13.1
-	gimli@0.28.1
 	gimli@0.29.0
 	git2@0.19.0
 	glob@0.3.1
@@ -533,7 +536,6 @@ CRATES="
 	num_enum_derive@0.7.3
 	num_threads@0.1.7
 	objc@0.2.7
-	object@0.33.0
 	object@0.36.4
 	oboe-sys@0.6.1
 	oboe@0.6.1
@@ -621,7 +623,6 @@ CRATES="
 	prost-types@0.9.0
 	prost@0.9.0
 	protobuf@2.28.0
-	protols-tree-sitter-proto@0.2.0
 	psm@0.1.21
 	ptr_meta@0.1.4
 	ptr_meta_derive@0.1.4
@@ -665,12 +666,13 @@ CRATES="
 	resvg@0.41.0
 	rfc6979@0.3.1
 	rgb@0.8.49
+	ring@0.16.20
 	ring@0.17.8
 	rkyv@0.7.45
 	rkyv_derive@0.7.45
 	rmp@0.8.14
 	rmpv@1.3.0
-	rodio@0.17.3
+	rodio@0.19.0
 	roxmltree@0.19.0
 	roxmltree@0.20.0
 	rsa@0.9.6
@@ -686,8 +688,12 @@ CRATES="
 	rustix@0.37.27
 	rustix@0.38.35
 	rustls-native-certs@0.6.3
+	rustls-native-certs@0.8.0
 	rustls-pemfile@1.0.4
+	rustls-pemfile@2.1.3
+	rustls-pki-types@1.8.0
 	rustls-webpki@0.101.7
+	rustls@0.20.9
 	rustls@0.21.12
 	rustversion@1.0.17
 	rustybuzz@0.14.1
@@ -719,7 +725,7 @@ CRATES="
 	serde_derive_internals@0.29.1
 	serde_fmt@1.0.3
 	serde_json@1.0.127
-	serde_json_lenient@0.1.8
+	serde_json_lenient@0.2.1
 	serde_path_to_error@0.1.16
 	serde_qs@0.10.1
 	serde_qs@0.8.5
@@ -759,6 +765,7 @@ CRATES="
 	socket2@0.4.10
 	socket2@0.5.7
 	spdx@0.10.6
+	spin@0.5.2
 	spin@0.9.8
 	spirv@0.3.0+sdk-1.3.268.0
 	spki@0.6.0
@@ -800,7 +807,7 @@ CRATES="
 	sync_wrapper@0.1.2
 	synchronoise@1.0.1
 	sys-locale@0.3.1
-	sysinfo@0.30.13
+	sysinfo@0.31.4
 	system-configuration-sys@0.5.0
 	system-configuration@0.5.1
 	system-deps@6.2.2
@@ -857,22 +864,23 @@ CRATES="
 	tracing-serde@0.1.3
 	tracing-subscriber@0.3.18
 	tracing@0.1.40
-	tree-sitter-bash@0.21.0
-	tree-sitter-c@0.21.4
-	tree-sitter-cpp@0.22.3
-	tree-sitter-css@0.21.1
-	tree-sitter-elixir@0.2.0
-	tree-sitter-embedded-template@0.20.0
-	tree-sitter-go@0.21.2
+	tree-sitter-bash@0.23.1
+	tree-sitter-c@0.23.0
+	tree-sitter-cpp@0.23.0
+	tree-sitter-css@0.23.0
+	tree-sitter-elixir@0.3.0
+	tree-sitter-embedded-template@0.23.0
+	tree-sitter-go@0.23.1
 	tree-sitter-html@0.20.4
-	tree-sitter-jsdoc@0.21.0
-	tree-sitter-json@0.21.0
-	tree-sitter-python@0.21.0
-	tree-sitter-regex@0.21.0
-	tree-sitter-ruby@0.21.0
-	tree-sitter-rust@0.21.2
-	tree-sitter-typescript@0.21.2
-	tree-sitter-yaml@0.6.1
+	tree-sitter-jsdoc@0.23.0
+	tree-sitter-json@0.23.0
+	tree-sitter-language@0.1.0
+	tree-sitter-python@0.23.2
+	tree-sitter-regex@0.23.0
+	tree-sitter-ruby@0.23.0
+	tree-sitter-rust@0.23.0
+	tree-sitter-typescript@0.23.0
+	tree-sitter@0.23.0
 	try-lock@0.2.5
 	ttf-parser@0.21.1
 	tungstenite@0.20.1
@@ -895,6 +903,7 @@ CRATES="
 	unicode-xid@0.2.5
 	unicode_categories@0.1.1
 	unindent@0.1.11
+	untrusted@0.7.1
 	untrusted@0.9.0
 	url@2.5.2
 	urlencoding@2.1.3
@@ -930,27 +939,27 @@ CRATES="
 	wasm-bindgen-shared@0.2.93
 	wasm-bindgen@0.2.93
 	wasm-encoder@0.201.0
-	wasm-encoder@0.207.0
+	wasm-encoder@0.215.0
 	wasm-metadata@0.201.0
 	wasmparser@0.201.0
-	wasmparser@0.207.0
-	wasmprinter@0.207.0
-	wasmtime-asm-macros@21.0.1
-	wasmtime-c-api-impl@21.0.1
-	wasmtime-c-api-macros@21.0.1
-	wasmtime-component-macro@21.0.1
-	wasmtime-component-util@21.0.1
-	wasmtime-cranelift@21.0.1
-	wasmtime-environ@21.0.1
-	wasmtime-fiber@21.0.1
-	wasmtime-jit-icache-coherence@21.0.1
-	wasmtime-slab@21.0.1
-	wasmtime-types@21.0.1
-	wasmtime-versioned-export-macros@21.0.1
-	wasmtime-wasi@21.0.1
-	wasmtime-winch@21.0.1
-	wasmtime-wit-bindgen@21.0.1
-	wasmtime@21.0.1
+	wasmparser@0.215.0
+	wasmprinter@0.215.0
+	wasmtime-asm-macros@24.0.0
+	wasmtime-c-api-impl@24.0.0
+	wasmtime-c-api-macros@24.0.0
+	wasmtime-component-macro@24.0.0
+	wasmtime-component-util@24.0.0
+	wasmtime-cranelift@24.0.0
+	wasmtime-environ@24.0.0
+	wasmtime-fiber@24.0.0
+	wasmtime-jit-icache-coherence@24.0.0
+	wasmtime-slab@24.0.0
+	wasmtime-types@24.0.0
+	wasmtime-versioned-export-macros@24.0.0
+	wasmtime-wasi@24.0.0
+	wasmtime-winch@24.0.0
+	wasmtime-wit-bindgen@24.0.0
+	wasmtime@24.0.0
 	wast@35.0.2
 	wayland-backend@0.3.6
 	wayland-client@0.31.5
@@ -960,19 +969,21 @@ CRATES="
 	wayland-scanner@0.31.4
 	wayland-sys@0.31.4
 	web-sys@0.3.70
+	webpki-roots@0.22.6
 	webpki-roots@0.25.4
+	webpki@0.22.4
 	weezl@0.1.8
 	which@4.4.2
 	which@6.0.3
 	whoami@1.5.1
-	wiggle-generate@21.0.1
-	wiggle-macro@21.0.1
-	wiggle@21.0.1
+	wiggle-generate@24.0.0
+	wiggle-macro@24.0.0
+	wiggle@24.0.0
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-util@0.1.9
 	winapi-x86_64-pc-windows-gnu@0.4.0
 	winapi@0.3.9
-	winch-codegen@0.19.1
+	winch-codegen@0.22.0
 	windows-core@0.52.0
 	windows-core@0.54.0
 	windows-core@0.58.0
@@ -989,7 +1000,6 @@ CRATES="
 	windows-targets@0.48.5
 	windows-targets@0.52.6
 	windows@0.48.0
-	windows@0.52.0
 	windows@0.54.0
 	windows@0.58.0
 	windows_aarch64_gnullvm@0.42.2
@@ -1029,7 +1039,7 @@ CRATES="
 	wit-bindgen@0.22.0
 	wit-component@0.201.0
 	wit-parser@0.201.0
-	wit-parser@0.207.0
+	wit-parser@0.215.0
 	witx@0.9.1
 	wyz@0.5.1
 	x11-clipboard@0.9.2
@@ -1076,15 +1086,15 @@ declare -A GIT_CRATES=(
 	[font-kit]='https://github.com/zed-industries/font-kit;40391b7c0041d8a8572af2afa3de32ae088f0120;font-kit-%commit%'
 	[lsp-types]='https://github.com/zed-industries/lsp-types;72357d6f6d212bdffba3b5ef4b31d8ca856058e7;lsp-types-%commit%'
 	[nvim-rs]='https://github.com/KillTheMule/nvim-rs;69500bae73b8b3f02a05b7bee621a0d0e633da6c;nvim-rs-%commit%'
-	[tree-sitter-gomod]='https://github.com/camdencheek/tree-sitter-go-mod;1f55029bacd0a6a11f6eb894c4312d429dcf735c;tree-sitter-go-mod-%commit%'
-	[tree-sitter-gowork]='https://github.com/d1y/tree-sitter-go-work;dcbabff454703c3a4bc98a23cf8778d4be46fd22;tree-sitter-go-work-%commit%'
-	[tree-sitter-heex]='https://github.com/phoenixframework/tree-sitter-heex;6dd0303acf7138dd2b9b432a229e16539581c701;tree-sitter-heex-%commit%'
-	[tree-sitter-language]='https://github.com/tree-sitter/tree-sitter;7f4a57817d58a2f134fe863674acad6bbf007228;tree-sitter-%commit%/lib/language'
-	[tree-sitter-md]='https://github.com/zed-industries/tree-sitter-markdown;e3855e37f8f2c71aa7513c18a9c95fb7461b1b10;tree-sitter-markdown-%commit%'
-	[tree-sitter]='https://github.com/tree-sitter/tree-sitter;7f4a57817d58a2f134fe863674acad6bbf007228;tree-sitter-%commit%/lib'
-	[xim-ctext]='https://github.com/npmania/xim-rs;27132caffc5b9bc9c432ca4afad184ab6e7c16af;xim-rs-%commit%/xim-ctext'
-	[xim-parser]='https://github.com/npmania/xim-rs;27132caffc5b9bc9c432ca4afad184ab6e7c16af;xim-rs-%commit%/xim-parser'
-	[xim]='https://github.com/npmania/xim-rs;27132caffc5b9bc9c432ca4afad184ab6e7c16af;xim-rs-%commit%'
+	[protols-tree-sitter-proto]='https://github.com/zed-industries/tree-sitter-proto;0848bd30a64be48772e15fbb9d5ba8c0cc5772ad;tree-sitter-proto-%commit%'
+	[tree-sitter-gomod]='https://github.com/zed-industries/tree-sitter-go-mod;a9aea5e358cde4d0f8ff20b7bc4fa311e359c7ca;tree-sitter-go-mod-%commit%'
+	[tree-sitter-gowork]='https://github.com/zed-industries/tree-sitter-go-work;acb0617bf7f4fda02c6217676cc64acb89536dc7;tree-sitter-go-work-%commit%'
+	[tree-sitter-heex]='https://github.com/zed-industries/tree-sitter-heex;1dd45142fbb05562e35b2040c6129c9bca346592;tree-sitter-heex-%commit%'
+	[tree-sitter-md]='https://github.com/zed-industries/tree-sitter-markdown;4cfa6aad6b75052a5077c80fd934757d9267d81b;tree-sitter-markdown-%commit%'
+	[tree-sitter-yaml]='https://github.com/zed-industries/tree-sitter-yaml;baff0b51c64ef6a1fb1f8390f3ad6015b83ec13a;tree-sitter-yaml-%commit%'
+	[xim-ctext]='https://github.com/XDeme1/xim-rs;d50d461764c2213655cd9cf65a0ea94c70d3c4fd;xim-rs-%commit%/xim-ctext'
+	[xim-parser]='https://github.com/XDeme1/xim-rs;d50d461764c2213655cd9cf65a0ea94c70d3c4fd;xim-rs-%commit%/xim-parser'
+	[xim]='https://github.com/XDeme1/xim-rs;d50d461764c2213655cd9cf65a0ea94c70d3c4fd;xim-rs-%commit%'
 	[xkbcommon]='https://github.com/ConradIrwin/xkbcommon-rs;fcbb4612185cc129ceeff51d22f7fb51810a03b2;xkbcommon-rs-%commit%'
 )
 
@@ -1157,13 +1167,14 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# Cargo offline fetch workaround
-	local TS_COMMIT="7f4a57817d58a2f134fe863674acad6bbf007228"
-	local TS_GIT="git = \"https://github.com/tree-sitter/tree-sitter\", rev = \"${TS_COMMIT}\""
-	local TS_PATH="path = \"${WORKDIR}/tree-sitter-${TS_COMMIT}/lib\""
 
-	sed -e "s#${TS_GIT}#${TS_PATH}#" \
-		-i "${S}/Cargo.toml" || die "Cargo fetch workaround failed"
+	export APP_CLI="zedit"
+	export APP_ICON="zed"
+	export APP_ID="dev.zed.Zed"
+	export APP_NAME="Zed"
+	export APP_ARGS="%U"
+	export DO_STARTUP_NOTIFY="true"
+	envsubst < "crates/zed/resources/zed.desktop.in" > ${APP_ID}.desktop || die
 }
 
 src_configure() {
@@ -1177,13 +1188,13 @@ src_compile() {
 }
 
 src_install() {
-	newbin $(cargo_target_dir)/cli zed
+	newbin $(cargo_target_dir)/cli ${APP_CLI}
 	exeinto "/usr/libexec"
 	newexe $(cargo_target_dir)/zed zed-editor
 
 	newicon -s 512 crates/zed/resources/app-icon.png zed.png
 	newicon -s 1024 crates/zed/resources/app-icon@2x.png zed.png
-	make_desktop_entry /usr/bin/zed Zed zed.png "TextEditor;Development;IDE"
+	domenu "${S}/${APP_ID}.desktop"
 }
 
 src_test () {
