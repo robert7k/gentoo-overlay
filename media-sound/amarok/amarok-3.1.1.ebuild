@@ -54,6 +54,7 @@ DEPEND="
 	media-libs/taglib-extras
 	media-libs/taglib
 	media-libs/phonon[qt5]
+	sci-libs/fftw
 
 	ipod? ( media-libs/libmygpo-qt )
 	lastfm? ( >=media-libs/liblastfm-1.1.0_pre20150206 )
