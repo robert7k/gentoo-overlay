@@ -31,7 +31,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin dotool
+	dobin dotool dotoolc dotoold
 	dodoc README.md
 	doman dotool.1
 }
