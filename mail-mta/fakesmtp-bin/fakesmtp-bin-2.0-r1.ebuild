@@ -27,5 +27,6 @@ src_install() {
 	java-pkg_newjar ${S}/fakeSMTP-2.0.jar "${MY_PN}.jar" || die "java-pkg_newjar faild"
 	java-pkg_dolauncher ${MY_PN} --jar "${MY_PN}.jar" --pkg_args '-s -p 2525 -o /tmp/fakeSmtp-received-mails' || die "java-pkg_dolauncher failed"
 	doicon ${FILESDIR}/${MY_PN}.png
-	make_desktop_entry ${MY_PN} "FakeSMTP" ${MY_PN} "Development"
+	make_desktop_entry {MY_PN} "FakeSMTP" ${MY_PN} "Development"
+	mv usr/share/applications/fakesmtp-fakesmtp-bin.desktop usr/share/applications/com-nilhcem-fakesmtp-FakeSMTP.desktop
 }
