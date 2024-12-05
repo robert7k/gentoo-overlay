@@ -16,7 +16,7 @@ S="${WORKDIR}"
 LICENSE="GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="+sound"
+IUSE=""
 RESTRICT="splitdebug"
 
 RDEPEND="
@@ -27,6 +27,7 @@ RDEPEND="
 	dev-libs/nss
 	>=media-fonts/noto-emoji-20231130
 	media-libs/alsa-lib
+	media-libs/libpulse
 	media-libs/mesa[X(+)]
 	net-print/cups
 	sys-apps/dbus[X]
@@ -44,12 +45,6 @@ RDEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/pango
-	sound? (
-		|| (
-			media-libs/libpulse
-			media-sound/apulse
-		)
-	)
 "
 
 QA_PREBUILT="
@@ -77,10 +72,6 @@ src_install() {
 	dodoc changelog
 	doins -r opt
 	insinto /usr/share
-
-	if has_version media-sound/apulse[-sdk] && ! has_version media-sound/pulseaudio; then
-		sed -i 's/Exec=/Exec=apulse /g' usr/share/applications/signal-desktop.desktop || die
-	fi
 
 	doins -r usr/share/applications
 	doins -r usr/share/icons
