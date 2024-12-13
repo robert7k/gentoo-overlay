@@ -7,7 +7,7 @@ inherit desktop java-pkg-2 wrapper
 
 SLOT="$(ver_cut 1-2)"
 RDEPEND="
-	dev-debug/lldb:=
+	llvm-core/lldb:=
 	sys-apps/util-linux
 	sys-libs/libselinux
 	sys-libs/libxcrypt:=
