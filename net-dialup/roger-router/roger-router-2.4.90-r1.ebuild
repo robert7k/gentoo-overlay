@@ -31,10 +31,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_configure() {
-	local emesonargs=(
-        $(meson_use evolution)
-    )
-
 	meson_src_configure
 }
 
