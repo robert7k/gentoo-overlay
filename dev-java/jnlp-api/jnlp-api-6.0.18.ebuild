@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 JAVA_PKG_IUSE="source"
 
@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="source"
 
-DEPEND=">=virtual/jdk-1.6"
-RDEPEND=">=virtual/jre-1.6"
+DEPEND=">=virtual/jdk-1.7"
+RDEPEND=">=virtual/jre-1.7"
 
 src_install() {
 	java-pkg_dojar ${PN}.jar
