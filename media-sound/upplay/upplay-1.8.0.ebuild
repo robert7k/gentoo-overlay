@@ -17,6 +17,7 @@ DEPEND="dev-libs/jsoncpp:=
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
+		dev-qt/qtwebchannel:5
 		dev-qt/qtwebengine:5
 		dev-qt/qtwidgets:5
 		media-libs/qtmpris
