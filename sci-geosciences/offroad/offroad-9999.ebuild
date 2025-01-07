@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop git-r3 java-pkg-2 java-utils-2 java-ant-2
+inherit desktop git-r3 java-pkg-2
 
 DESCRIPTION="Offline vector map display ported from OsmAnd"
 HOMEPAGE="https://sourceforge.net/projects/offroadosm"

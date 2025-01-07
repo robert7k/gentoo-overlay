@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit desktop java-pkg-2 java-ant-2
+inherit desktop java-pkg-2
 
 DESCRIPTION="Free, DBMS-independent, cross-platform SQL query tool."
 HOMEPAGE="http://www.sql-workbench.net/"
