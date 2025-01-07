@@ -1,7 +1,7 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop git-r3 java-pkg-2 java-utils-2 java-ant-2
 
@@ -9,7 +9,7 @@ DESCRIPTION="Offline vector map display ported from OsmAnd"
 HOMEPAGE="https://sourceforge.net/projects/offroadosm"
 SRC_URI=""
 
-EGIT_REPO_URI="git://git.code.sf.net/p/offroadosm/code offroadosm-code"
+EGIT_REPO_URI="https://git.code.sf.net/p/offroadosm/code offroadosm-code"
 EGI_BRANCH="master"
 
 LICENSE="GPL-3"
@@ -29,5 +29,5 @@ src_install() {
 	java-pkg_dojar dist/OffRoad.jar
 	java-pkg_dolauncher ${PN} --jar OffRoad.jar --pwd /usr/share/${PN}
 	newicon res/offroad_icon.png ${PN}.png
-	make_desktop_entry ${PN} "OffRoad" ${PN}
+	make_desktop_entry ${PN} "OffRoad" ${PN} "Utility;Science;Geoscience"
 }

@@ -1,7 +1,7 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop git-r3 java-pkg-2 java-utils-2 java-ant-2
 
@@ -9,7 +9,7 @@ DESCRIPTION="Offline vector map display ported from OsmAnd"
 HOMEPAGE="https://sourceforge.net/projects/offroadosm"
 SRC_URI=""
 
-EGIT_REPO_URI="git://git.code.sf.net/p/offroadosm/code offroadosm-code"
+EGIT_REPO_URI="https://git.code.sf.net/p/offroadosm/code offroadosm-code"
 EGIT_COMMIT="fa8e57c7b734a07bb00bbc0e77e40578b0708ba6"
 
 
