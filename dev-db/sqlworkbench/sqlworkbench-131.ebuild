@@ -1,7 +1,7 @@
 # Copyright 2024 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit desktop java-pkg-2 java-ant-2
 
 DESCRIPTION="Free, DBMS-independent, cross-platform SQL query tool."
@@ -17,7 +17,7 @@ IUSE="firebird informix mssql mysql oracle postgres sybase"
 DEPEND=">=virtual/jdk-11:*"
 RDEPEND="
 	${DEPEND}
-	dev-java/log4j
+	dev-java/log4j-api
 	postgres? ( dev-java/jdbc-postgresql )
 	mysql? ( dev-java/jdbc-mysql )
 	mssql? ( dev-java/jdbc-mssqlserver )
