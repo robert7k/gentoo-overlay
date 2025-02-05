@@ -5,8 +5,6 @@ EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="true"
-KFMIN=5.115.0
-QTMIN=5.15.12
 inherit ecm kde.org optfeature
 
 DESCRIPTION="Advanced audio player based on KDE frameworks"
@@ -14,46 +12,47 @@ HOMEPAGE="https://amarok.kde.org/"
 SRC_URI="https://invent.kde.org/multimedia/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
 
 LICENSE="GPL-2"
-SLOT="5"
+SLOT="6"
 KEYWORDS="~amd64"
 IUSE="ipod lastfm mariadb mtp podcast wikipedia"
 
 DEPEND="
+	app-crypt/qca
 	dev-qt/linguist-tools
-	dev-qt/qtcore:5
-	dev-qt/qtdeclarative:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtxml:5
-	dev-qt/qtsql:5
+	dev-qt/qtbase:6
+	dev-qt/qtdeclarative:6
+	dev-qt/qtsvg:6
+	dev-qt/qttools:6
 
-	kde-frameworks/karchive:5
-	kde-frameworks/kcodecs:5
-	kde-frameworks/kconfig:5
-	kde-frameworks/kconfigwidgets:5
-	kde-frameworks/kcoreaddons:5
-	kde-frameworks/kcrash:5
-	kde-frameworks/kdbusaddons:5
-	kde-frameworks/kdeclarative:5
-	kde-frameworks/kdnssd:5
-	kde-frameworks/kdoctools:5
-	kde-frameworks/kglobalaccel:5
-	kde-frameworks/kguiaddons:5
-	kde-frameworks/ki18n:5
-	kde-frameworks/kiconthemes:5
-	kde-frameworks/kcmutils:5
-	kde-frameworks/kio:5
-	kde-frameworks/knotifications:5
-	kde-frameworks/kpackage:5
-	kde-frameworks/solid:5
-	kde-frameworks/ktexteditor:5
-	kde-frameworks/threadweaver:5
-	kde-frameworks/kwidgetsaddons:5
-	kde-frameworks/kwindowsystem:5
+	kde-frameworks/extra-cmake-modules
+	kde-frameworks/karchive:6
+	kde-frameworks/kcmutils:6
+	kde-frameworks/kcodecs:6
+	kde-frameworks/kconfig:6
+	kde-frameworks/kconfigwidgets:6
+	kde-frameworks/kcoreaddons:6
+	kde-frameworks/kcrash:6
+	kde-frameworks/kdbusaddons:6
+	kde-frameworks/kdnssd:6
+	kde-frameworks/kdoctools:6
+	kde-frameworks/kglobalaccel:6
+	kde-frameworks/kguiaddons:6
+	kde-frameworks/ki18n:6
+	kde-frameworks/kiconthemes:6
+	kde-frameworks/kio:6
+	kde-frameworks/kirigami:6
+	kde-frameworks/knewstuff:6
+	kde-frameworks/knotifications:6
+	kde-frameworks/kpackage:6
+	kde-frameworks/kstatusnotifieritem:6
+	kde-frameworks/ktexteditor:6
+	kde-frameworks/kwidgetsaddons:6
+	kde-frameworks/kwindowsystem:6
+	kde-frameworks/solid:6
+	kde-frameworks/threadweaver:6
 
-	media-libs/taglib-extras
 	media-libs/taglib
-	media-libs/phonon[qt5]
+	media-libs/phonon[qt6]
 	sci-libs/fftw
 
 	ipod? ( media-libs/libmygpo-qt )
@@ -62,12 +61,12 @@ DEPEND="
 	!mariadb? ( dev-db/mysql-connector-c:= )
 	mtp? ( media-libs/libmtp )
 	podcast? ( media-libs/libmygpo-qt )
-	wikipedia? ( >=dev-qt/qtwebengine-${QTMIN}:5 )
+	wikipedia? ( dev-qt/qtwebengine:6 )
 "
 RDEPEND="${DEPEND}"
 
 RDEPEND="${DEPEND}
-	kde-frameworks/kirigami:5
+	kde-frameworks/kirigami:6
 	media-video/ffmpeg
 "
 
@@ -75,7 +74,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_WITH_QT6=OFF
+		-DBUILD_WITH_QT6=ON
 		-DWITH_MP3Tunes=OFF
 		-DWITH_PLAYER=ON
 		-DWITH_UTILITIES=ON
@@ -87,9 +86,10 @@ src_configure() {
 		$(cmake_use_find_package lastfm LibLastFm)
 		$(cmake_use_find_package !mariadb MySQL)
 		$(cmake_use_find_package mtp Mtp)
-		$(cmake_use_find_package podcast Mygpo-qt5)
-		$(cmake_use_find_package wikipedia Qt5WebEngine)
+		$(cmake_use_find_package podcast Mygpo-qt6)
+		$(cmake_use_find_package wikipedia Qt6WebEngine)
 	)
+
 	use ipod && mycmakeargs+=( DWITH_GDKPixBuf=ON )
 
 	ecm_src_configure
@@ -106,7 +106,7 @@ pkg_postinst() {
 		use mariadb && echo "MariaDB" || echo "MySQL"
 	}
 
-	optfeature "Audio CD support" "kde-apps/audiocd-kio:5"
+	optfeature "Audio CD support" "kde-apps/audiocd-kio:6"
 
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog "You must configure ${PN} to use an external database server."
