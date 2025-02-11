@@ -83,7 +83,7 @@ src_install() {
 	dosym -r /opt/Signal/${MY_PN} /usr/bin/${MY_PN}
 
 	if ! use pulseaudio ; then
-		dosym /usr/lib64/apulse/libpulse.so.0 /opt/Signal/libpulse.so.0
+		dosym -r "${EPREFIX}/usr/lib64/apulse/libpulse.so.0" /opt/Signal/libpulse.so.0
 	fi
 }
 
