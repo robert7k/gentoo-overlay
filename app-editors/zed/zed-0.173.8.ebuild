@@ -180,7 +180,7 @@ src_prepare() {
 	local ASYNC_TLS_PATH="path = \"${WORKDIR}/async-tls-${ASYNC_TLS_COMMIT}\""
 
 	sed -e "s#${CPAL_GIT}#${CPAL_PATH}#" \
-        -e "s#${ASYNC_TLS_GIT}#${ASYNC_TLS_PATH}#" \
+		-e "s#${ASYNC_TLS_GIT}#${ASYNC_TLS_PATH}#" \
 		-i "${S}/Cargo.toml" || die "Cargo fetch workaround failed"
 }
 
