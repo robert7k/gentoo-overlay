@@ -1,0 +1,2 @@
+#!/bin/sh
+exec $(command -pv apulse) /opt/Signal/signal-desktop "${@}"
