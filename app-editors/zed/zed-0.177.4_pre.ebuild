@@ -170,7 +170,11 @@ src_prepare() {
 
 	export APP_CLI="zedit"
 	export APP_ICON="zed"
-	export APP_ID="dev.zed.Zed"
+	if ( [[ "${PV}" == *pre ]] ); then
+		export APP_ID="dev.zed.Zed-Preview"
+	else
+		export APP_ID="dev.zed.Zed"
+	fi
 	export APP_NAME="Zed"
 	export APP_ARGS="%U"
 	export DO_STARTUP_NOTIFY="true"
