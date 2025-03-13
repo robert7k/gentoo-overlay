@@ -89,6 +89,7 @@ SRC_URI="
 	)
 	${CARGO_CRATE_URIS}"
 
+S="${WORKDIR}/${PN}-${PV/_/-}"
 LICENSE="GPL-3+"
 # Dependent crate licenses
 LICENSE+="
@@ -142,8 +143,6 @@ BDEPEND="
 "
 
 QA_FLAGS_IGNORED="usr/bin/zedit"
-
-S="${WORKDIR}/${PN}-${PV/_/-}"
 
 pkg_setup() {
 	if tc-is-gcc; then
