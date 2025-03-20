@@ -10,7 +10,7 @@ SRC_URI="http://www.lesbonscomptes.com/upplay/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="dev-libs/jsoncpp:=
