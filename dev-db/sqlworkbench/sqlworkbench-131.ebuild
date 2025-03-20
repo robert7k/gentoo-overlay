@@ -12,19 +12,16 @@ SLOT="0"
 # Actually, modified
 LICENSE="Apache-2.0"
 
-IUSE="firebird informix mssql mysql oracle postgres sybase"
+IUSE="mysql postgres sybase"
 
+BDEPEND="app-arch/unzip"
 DEPEND=">=virtual/jdk-11:*"
 RDEPEND="
 	${DEPEND}
 	dev-java/log4j-api
 	postgres? ( dev-java/jdbc-postgresql )
 	mysql? ( dev-java/jdbc-mysql )
-	mssql? ( dev-java/jdbc-mssqlserver )
 	sybase? ( dev-java/jtds )
-	informix? ( dev-java/jdbc-informix )
-	firebird? ( dev-java/jdbc-jaybird )
-	oracle? ( dev-java/jdbc-oracle-bin )
 "
 
 EANT_BUILD_XML="./scripts/build.xml"
@@ -34,7 +31,7 @@ EANT_BUILD_TARGET="init prepare compile make-jar"
 S="${WORKDIR}"
 
 src_install() {
-	local install_dir="${EROOT}usr/share/${PN}";
+	local install_dir="${EROOT}/usr/share/${PN}";
 	insinto "${install_dir}";
 
 	java-pkg_dojar ${PN}.jar;
@@ -44,14 +41,8 @@ src_install() {
 			local jb;
 			if [ "${backend}" == "postgres" ]; then
 				jb="postgresql";
-			elif [ "${backend}" == "mssql" ]; then
-				jb="mssqlserver";
 			elif [ "${backend}" == "sybase" ]; then
 				jb="jtds";
-			elif [ "${backend}" == "firebird" ]; then
-				jb="jaybird";
-			elif [ "${backend}" == "oracle" ]; then
-				jb="oracle-bin";
 			else
 				jb="${backend}";
 			fi
