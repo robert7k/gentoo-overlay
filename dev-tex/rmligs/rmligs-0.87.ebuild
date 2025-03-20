@@ -7,7 +7,7 @@ DESCRIPTION="Removes incorrectly used ligatures from LaTeX documents"
 HOMEPAGE="https://ctan.org/tex-archive/support/rmligs"
 SRC_URI="http://mirrors.ctan.org/support/rmligs/${P}.tar.gz"
 
-LICENSE="GPL"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -17,6 +17,6 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 
 src_install() {
-	dobin ${PN} 
+	dobin ${PN}
 	dodoc README Changes BUGS
 }
