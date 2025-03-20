@@ -22,7 +22,8 @@ HOMEPAGE="https://jetbrains.com/idea/"
 
 SRC_URI="https://download.jetbrains.com/${PN}/${PN}IU-${PV}.tar.gz"
 
-LICENSE="IntelliJ-IDEA"
+LICENSE="|| ( JetBrains-business JetBrains-classroom JetBrains-educational JetBrains-individual )
+	Apache-1.1 Apache-2.0 BSD BSD-2 CC0-1.0 CC-BY-2.5 CDDL CDDL-1.1 CPL-1.0 GPL-2 GPL-2-with-classpath-exception GPL-3 ISC LGPL-2.1 LGPL-3 MIT MPL-1.1 MPL-2.0 W3C ZLIB"
 IUSE=""
 KEYWORDS="~amd64 ~x86"
 
