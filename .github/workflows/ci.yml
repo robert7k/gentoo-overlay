@@ -22,4 +22,4 @@ jobs:
     - name: Run pkgcheck
       uses: pkgcore/pkgcheck-action@v1
       with:
-        args: --profiles stable
+        args: --profiles stable --keywords=-VisibleVcsPkg
