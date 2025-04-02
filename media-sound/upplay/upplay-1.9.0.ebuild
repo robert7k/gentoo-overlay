@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,13 +14,9 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="dev-libs/jsoncpp:=
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtwebchannel:5
-		dev-qt/qtwebengine:5
-		dev-qt/qtwidgets:5
-		media-libs/qtmpris
+		dev-qt/qtbase:6
+		dev-qt/qtwebchannel:6
+		dev-qt/qtwebengine:6
 		>=net-libs/libupnpp-1.0"
 RDEPEND="${DEPEND}"
 
@@ -32,7 +28,7 @@ src_prepare() {
 }
 
 src_compile() {
-	eqmake5 PREFIX="/usr"
+	eqmake6 PREFIX="/usr"
 	sed -e "s:Categories=.*$:Categories=Audio;AudioVideo;:" \
 		-i upplay.desktop
 }
