@@ -126,6 +126,7 @@ DEPEND="
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/vulkan-loader[X]
+	net-analyzer/openbsd-netcat
 	net-misc/curl
 	sys-libs/zlib
 	x11-libs/libxcb:=
