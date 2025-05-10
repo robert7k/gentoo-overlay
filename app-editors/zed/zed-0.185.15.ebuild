@@ -102,7 +102,7 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 IUSE="gles lto"
-CHECKREQS_DISK_BUILD="10G"
+CHECKREQS_DISK_BUILD="11G"
 CHECKREQS_MEMORY="16G"
 
 DEPEND="
@@ -128,6 +128,7 @@ DEPEND="
 	media-libs/vulkan-loader[X]
 	net-misc/curl
 	sys-libs/zlib
+	x11-libs/libX11
 	x11-libs/libxcb:=
 	x11-libs/libxkbcommon[X]
 "
