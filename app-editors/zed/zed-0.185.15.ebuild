@@ -101,7 +101,7 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="gles"
+IUSE="gles lto"
 CHECKREQS_DISK_BUILD="10G"
 CHECKREQS_MEMORY="16G"
 
@@ -147,11 +147,16 @@ BDEPEND="
 QA_FLAGS_IGNORED="usr/bin/zedit"
 
 pkg_setup() {
-	if tc-is-gcc; then
-		export CARGO_PROFILE_RELEASE_LTO="true"
-	elif tc-is-clang; then
-		export CARGO_PROFILE_RELEASE_LTO="thin"
+	if use lto; then
+		if tc-is-gcc; then
+			export CARGO_PROFILE_RELEASE_LTO="true"
+		elif tc-is-clang; then
+			export CARGO_PROFILE_RELEASE_LTO="thin"
+		fi
+	else
+		export CARGO_PROFILE_RELEASE_LTO="false"
 	fi
+
 	strip-unsupported-flags
 	# flags from upstream
 	export RUSTFLAGS="${RUSTFLAGS} -C symbol-mangling-version=v0 --cfg tokio_unstable -C link-arg=-fuse-ld=mold -C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib"
