@@ -95,6 +95,8 @@ src_install() {
 	fperms 4755 "${DESTDIR}"/chrome-sandbox
 
 	dosym "${DESTDIR}/${PN}" /usr/bin/${PN}
+
+	sed -i 's|^Exec=/opt/teams-for-linux/teams-for-linux %U$|Exec=/opt/teams-for-linux/teams-for-linux --ozone-platform-hint=auto %U|' "usr/share/applications/${PN}.desktop"
 	domenu usr/share/applications/${PN}.desktop
 
 	for size in {16,24,32,48,64,96,128,256,512,1024}; do
