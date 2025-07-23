@@ -103,7 +103,6 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="gles"
 CHECKREQS_DISK_BUILD="11G"
 CHECKREQS_MEMORY="8G"
 
@@ -165,9 +164,6 @@ pkg_setup() {
 	export RUSTFLAGS="${RUSTFLAGS} -C symbol-mangling-version=v0 --cfg tokio_unstable -C link-arg=-fuse-ld=mold -C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib"
 	# fix error in livekit-rust-sdks
 	export RUSTFLAGS="${RUSTFLAGS} -A unexpected_cfgs"
-	if use gles; then
-		export RUSTFLAGS="${RUSTFLAGS} --cfg gles"
-	fi
 	llvm-r1_pkg_setup
 	rust_pkg_setup
 }
