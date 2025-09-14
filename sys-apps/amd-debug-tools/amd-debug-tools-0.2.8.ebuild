@@ -26,7 +26,6 @@ DEPEND="
 	dev-python/tabulate[${PYTHON_USEDEP}]"
 
 RDEPEND="${DEPEND}
-	sys-apps/edid-decode
 	sys-power/iasl"
 
 distutils_enable_tests unittest
