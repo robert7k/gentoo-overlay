@@ -1,0 +1,11 @@
+--- a/libs/scrap/build.rs
++++ b/libs/scrap/build.rs
+@@ -63,7 +63,7 @@ fn link_vcpkg(mut path: PathBuf, name: &str) -> PathBuf {
+     }
+     path.push(target);
+     println!(
+-        "cargo:rustc-link-lib=static={}",
++        "cargo:rustc-link-lib=dylib={}",
+         name.trim_start_matches("lib")
+     );
+     println!(

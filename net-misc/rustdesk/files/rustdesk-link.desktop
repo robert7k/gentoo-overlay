@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=RustDesk Link
+Comment=RustDesk Direct Link
+Exec=rustdesk --connect %u
+Icon=rustdesk
+Terminal=false
+Type=Application
+Categories=Network;RemoteAccess;
+MimeType=x-scheme-handler/rustdesk;
+StartupWMClass=rustdesk
+Keywords=remote;desktop;link;

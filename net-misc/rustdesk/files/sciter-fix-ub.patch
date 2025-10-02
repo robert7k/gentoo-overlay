@@ -1,0 +1,14 @@
+--- a/src/value.rs
++++ b/src/value.rs
+@@ -578,10 +578,11 @@ impl Value {
+ 	}
+ 
+   #[allow(clippy::mut_from_ref)]
++  #[allow(invalid_reference_casting)]
+ 	fn ensure_tmp_mut(&self) -> &mut Value {
+ 		let cp = self as *const Value;
+ 		let mp = cp as *mut Value;
+ 		let me = unsafe { &mut *mp };
+ 		return me.ensure_tmp();
+ 	}
+ 

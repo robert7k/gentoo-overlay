@@ -1,0 +1,13 @@
+--- a/src/ui.rs
++++ b/src/ui.rs
+@@ -177,10 +177,4 @@ pub fn start(args: &mut [String]) {
+     }
+     #[cfg(not(feature = "inline"))]
+-    frame.load_file(&format!(
+-        "file://{}/src/ui/{}",
+-        std::env::current_dir()
+-            .map(|c| c.display().to_string())
+-            .unwrap_or("".to_owned()),
+-        page
+-    ));
++    frame.load_file(&format!("file:///usr/share/rustdesk/ui/{}", page));
