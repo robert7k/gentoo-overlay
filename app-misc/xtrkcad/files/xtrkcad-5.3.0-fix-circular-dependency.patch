@@ -1,0 +1,20 @@
+--- a/app/cornu/CMakeLists.txt
++++ app/cornu/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ project(cornu)
+ 	
+-add_library(xtrkcad-cornu "")
++add_library(xtrkcad-cornu STATIC "")
+ 
+ target_sources(xtrkcad-cornu
+ 	PRIVATE
+@@ -23,7 +23,8 @@
+ target_link_libraries(xtrkcad-cornu
+ 	PRIVATE
+ 		xtrkcad-wlib
+-		xtrkcad-lib
+ )
+ 
+ target_include_directories(xtrkcad-cornu PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
++
++set_target_properties(xtrkcad-cornu PROPERTIES POSITION_INDEPENDENT_CODE ON)
