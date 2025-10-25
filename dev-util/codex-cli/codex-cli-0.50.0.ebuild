@@ -421,8 +421,8 @@ CRATES="
 	regex@1.11.1
 	reqwest@0.12.23
 	ring@0.17.14
-	rmcp-macros@0.8.2
-	rmcp@0.8.2
+	rmcp-macros@0.8.3
+	rmcp@0.8.3
 	rustc-demangle@0.1.25
 	rustc-hash@1.1.0
 	rustc-hash@2.1.1
@@ -720,9 +720,7 @@ SRC_URI="https://github.com/openai/codex/archive/refs/tags/rust-v${PV}.tar.gz ->
 "
 S="${WORKDIR}/codex-rust-v${PV/_/-}/codex-rs"
 
-LICENSE=""
-# Dependent crate licenses
-LICENSE+="
+LICENSE="
 	Apache-2.0 BSD-2 BSD Boost-1.0 CC0-1.0 CDLA-Permissive-2.0 ISC MIT
 	MPL-2.0 Unicode-3.0 ZLIB
 "
