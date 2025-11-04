@@ -23,7 +23,7 @@ CRATES="
 	anstyle-query@1.1.3
 	anstyle-wincon@3.0.9
 	anstyle@1.0.11
-	anyhow@1.0.99
+	anyhow@1.0.100
 	arboard@3.6.0
 	arrayvec@0.7.6
 	ascii-canvas@3.0.0
@@ -104,7 +104,6 @@ CRATES="
 	crossbeam-deque@0.8.6
 	crossbeam-epoch@0.9.18
 	crossbeam-utils@0.8.21
-	crossterm@0.28.1
 	crossterm_winapi@0.9.1
 	crunchy@0.2.4
 	crypto-common@0.1.6
@@ -210,6 +209,7 @@ CRATES="
 	hashbrown@0.12.3
 	hashbrown@0.14.5
 	hashbrown@0.15.4
+	hashbrown@0.16.0
 	heck@0.5.0
 	hermit-abi@0.5.2
 	hex@0.4.3
@@ -248,7 +248,7 @@ CRATES="
 	image@0.25.8
 	indenter@0.3.3
 	indexmap@1.9.3
-	indexmap@2.10.0
+	indexmap@2.12.0
 	indoc@2.0.6
 	inotify-sys@0.1.5
 	inotify@0.11.0
@@ -478,6 +478,7 @@ CRATES="
 	serial_test@3.2.0
 	serial_test_derive@3.2.0
 	sha1@0.10.6
+	sha1_smol@1.0.1
 	sha2@0.10.9
 	sharded-slab@0.1.7
 	shared_library@0.1.9
@@ -529,9 +530,9 @@ CRATES="
 	textwrap@0.11.0
 	textwrap@0.16.2
 	thiserror-impl@1.0.69
-	thiserror-impl@2.0.16
+	thiserror-impl@2.0.17
 	thiserror@1.0.69
-	thiserror@2.0.16
+	thiserror@2.0.17
 	thread_local@1.1.9
 	tiff@0.10.3
 	tiktoken-rs@0.7.0
@@ -706,7 +707,8 @@ CRATES="
 "
 
 declare -A GIT_CRATES=(
-	[ratatui]='https://github.com/nornagon/ratatui;9b2ad1298408c45918ee9f8241a6f95498cdbed2;ratatui-%commit%'
+    [crossterm]='https://github.com/nornagon/crossterm;87db8bfa6dc99427fd3b071681b07fc31c6ce995;crossterm-%commit%'
+    [ratatui]='https://github.com/nornagon/ratatui;9b2ad1298408c45918ee9f8241a6f95498cdbed2;ratatui-%commit%'
 )
 
 RUST_MIN_VER="1.85.0"
@@ -738,7 +740,11 @@ src_prepare() {
 	local RATATUI_GIT="ratatui = { git = \"https://github.com/nornagon/ratatui\", branch = \"nornagon-v0.29.0-patch\""
 	local RATATUI_PATH="ratatui = \\{ path = \"${WORKDIR}/ratatui-9b2ad1298408c45918ee9f8241a6f95498cdbed2\""
 
+	local CROSSTERM_GIT="crossterm = { git = \"https://github.com/nornagon/crossterm\", branch = \"nornagon/color-query\""
+	local CROSSTERM_PATH="crossterm = \\{ path = \"${WORKDIR}/crossterm-87db8bfa6dc99427fd3b071681b07fc31c6ce995\""
+
 	sed -e "s#${RATATUI_GIT}#${RATATUI_PATH}#" \
+		-e "s#${CROSSTERM_GIT}#${CROSSTERM_PATH}#" \
 		-i "${S}/Cargo.toml" || die "Cargo fetch workaround failed"
 }
 
