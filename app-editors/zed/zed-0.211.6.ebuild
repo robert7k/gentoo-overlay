@@ -142,7 +142,6 @@ BDEPEND="
 	dev-build/cmake
 	dev-util/vulkan-headers
 	sys-devel/gettext
-	sys-devel/mold
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}=
 		llvm-core/llvm:${LLVM_SLOT}=
@@ -164,7 +163,7 @@ pkg_setup() {
 
 	strip-unsupported-flags
 	# flags from upstream
-	export RUSTFLAGS="${RUSTFLAGS} -C symbol-mangling-version=v0 --cfg tokio_unstable -C link-arg=-fuse-ld=mold -C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib"
+	export RUSTFLAGS="${RUSTFLAGS} -C symbol-mangling-version=v0 --cfg tokio_unstable -C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib"
 	# fix error in livekit-rust-sdks
 	export RUSTFLAGS="${RUSTFLAGS} -A unexpected_cfgs"
 	llvm-r1_pkg_setup
