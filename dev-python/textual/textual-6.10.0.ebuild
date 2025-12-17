@@ -6,18 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{11..13} )
 
-DOCS_BUILDER="mkdocs"
-DOCS_DEPEND="
-	dev-python/mkdocstrings
-	dev-python/mkdocstrings-python
-	dev-python/mkdocs-exclude
-	dev-python/mkdocs-git-revision-date-localized-plugin
-	dev-python/mkdocs-material
-	dev-python/mkdocs-rss-plugin
-"
-DOCS_INITIALIZE_GIT=1
-
-inherit distutils-r1 optfeature docs
+inherit distutils-r1
 
 DESCRIPTION="Modern Text User Interface framework"
 HOMEPAGE="https://github.com/Textualize/textual https://pypi.org/project/textual/"
@@ -40,17 +29,3 @@ DEPEND="${RDEPEND}"
 DOCS+=( CHANGELOG.md LICENSE README.md )
 
 RESTRICT="test"
-
-python_compile_all() {
-	echo "INHERIT: mkdocs-offline.yml" > "${S}/mkdocs.yml"
-	grep -v "\- \"*[Bb]log" "${S}/mkdocs-nav.yml" >> "${S}/mkdocs.yml"
-	if use doc; then
-		DOCS+=( questions )
-	fi
-	docs_compile
-	rm "${S}/mkdocs.yml"
-}
-
-pkg_postinst() {
-	optfeature "bindings for python" dev-python/tree-sitter
-}
