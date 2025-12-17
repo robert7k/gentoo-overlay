@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <longdescription lang="en">
+        Mistral Vibe is a minimal CLI coding agent by Mistral AI. It provides
+        a command-line interface for interacting with Mistral AI models and
+        includes features like autocompletion, code analysis, and agent tools.
+    </longdescription>
+    <use>
+        <flag name="test">Enable test suite</flag>
+    </use>
+    <upstream>
+        <remote-id type="github">mistralai/mistral-vibe</remote-id>
+    </upstream>
+</pkgmetadata>
