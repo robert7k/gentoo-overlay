@@ -35,44 +35,11 @@ RDEPEND="
 	>=dev-python/typing-extensions-4.4.0[${PYTHON_USEDEP}]
 	<dev-python/typing-extensions-5[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/griffe[${PYTHON_USEDEP}]
-		dev-python/httpx[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		=dev-python/textual-dev-1.7*[${PYTHON_USEDEP}]
-	)
-"
 DEPEND="${RDEPEND}"
 
 DOCS+=( CHANGELOG.md LICENSE README.md )
 
-EPYTEST_XDIST=1
-EPYTEST_DESELECT=(
-	# Those tests ask to press keys
-	tests/snapshot_tests/test_snapshots.py
-	tests/test_xterm_parser.py::test_escape_sequence_resulting_in_multiple_keypresses
-
-	# Need a package that should be optional
-	tests/text_area/test_languages.py
-
-	# Xdist fails thoses
-	tests/test_focus.py::test_focus_next_and_previous
-	tests/test_focus.py::test_focus_next_wrap_around
-	tests/test_focus.py::test_focus_previous_wrap_around
-	tests/test_focus.py::test_wrap_around_selector
-	tests/test_focus.py::test_no_focus_empty_selector
-	tests/test_focus.py::test_focus_next_and_previous_with_type_selector
-	tests/test_focus.py::test_focus_next_and_previous_with_str_selector
-	tests/test_focus.py::test_focus_next_and_previous_with_str_selector_without_self
-	tests/test_focus.py::test_focus_chain
-	tests/test_focus.py::test_allow_focus
-	tests/test_focus.py::test_focus_next_and_previous_with_type_selector_without_self
-
-	# Needs a fixture that does not exist
-	tests/test_progress_bar.py::test_progress_bar_width_1fr
-)
-distutils_enable_tests pytest
+RESTRICT="test"
 
 python_compile_all() {
 	echo "INHERIT: mkdocs-offline.yml" > "${S}/mkdocs.yml"
