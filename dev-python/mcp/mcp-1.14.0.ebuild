@@ -19,8 +19,7 @@ KEYWORDS="~amd64"
 RESTRICT="test"
 
 RDEPEND="
-	>=dev-python/pydantic-2.0[${PYTHON_USEDEP}]
-	>=dev-python/pydantic-core-2.0[${PYTHON_USEDEP}]
+	dev-python/pydantic[${PYTHON_USEDEP}]
 	>=dev-python/agent-client-protocol-0.6.3[${PYTHON_USEDEP}]
 	dev-python/httpx-sse[${PYTHON_USEDEP}]
 	dev-python/starlette[${PYTHON_USEDEP}]
