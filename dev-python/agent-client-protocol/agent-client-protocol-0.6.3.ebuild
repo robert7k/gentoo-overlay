@@ -21,6 +21,5 @@ KEYWORDS="~amd64"
 RESTRICT="test"
 
 RDEPEND="
-    >=dev-python/pydantic-2.0[${PYTHON_USEDEP}]
-    >=dev-python/pydantic-core-2.0[${PYTHON_USEDEP}]
+    dev-python/pydantic[${PYTHON_USEDEP}]
 "
