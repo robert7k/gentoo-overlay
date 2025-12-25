@@ -6,9 +6,7 @@
         a command-line interface for interacting with Mistral AI models and
         includes features like autocompletion, code analysis, and agent tools.
     </longdescription>
-    <use>
-        <flag name="test">Enable test suite</flag>
-    </use>
+
     <upstream>
         <remote-id type="github">mistralai/mistral-vibe</remote-id>
     </upstream>
