@@ -24,11 +24,16 @@ src_prepare() {
 	eapply_user
 
 	sed -e "s:WEBPLATFORM = webkit:WEBPLATFORM = webengine:" \
+		-e "s:config += dbus:QT += dbus:" \
 		-i upplay.pro
+
+	# Remove pre-generated Makefiles with wrong qmake paths
+	rm -f amber-mpris/Makefile amber-mpris/*/Makefile amber-mpris/.qmake.stash
 }
 
 src_compile() {
 	eqmake6 PREFIX="/usr"
+	emake
 	sed -e "s:Categories=.*$:Categories=Audio;AudioVideo;:" \
 		-i upplay.desktop
 }
