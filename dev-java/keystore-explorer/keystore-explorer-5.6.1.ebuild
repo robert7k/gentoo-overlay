@@ -8,18 +8,17 @@ inherit desktop java-pkg-2
 MY_PV=$(ver_rs 1- '')
 
 DESCRIPTION="Java key-store management tool."
+HOMEPAGE="https://keystore-explorer.org https://github.com/kaikramer/keystore-explorer"
 SRC_URI="https://github.com/kaikramer/${PN}/releases/download/v${PV}/kse-${MY_PV}.zip"
-HOMEPAGE="http://keystore-explorer.org https://github.com/kaikramer/keystore-explorer"
+
+S="${WORKDIR}/kse-${MY_PV}"
 
 LICENSE="GPL-3"
-IUSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+BDEPEND="app-arch/unzip"
 DEPEND=">=virtual/jdk-11"
-RDEPEND=""
-
-S="${WORKDIR}/kse-${MY_PV}"
 
 src_install() {
 	dodoc readme.txt
