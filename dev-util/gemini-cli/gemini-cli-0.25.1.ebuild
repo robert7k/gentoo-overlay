@@ -18,7 +18,7 @@ RDEPEND="
 "
 
 src_prepare() {
-	cp ${DISTDIR}/${P}.js ${S}/gemini.js
+	cp "${DISTDIR}/${P}.js" "${S}/gemini.js"
 
 	default
 }
