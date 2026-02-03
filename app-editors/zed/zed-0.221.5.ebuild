@@ -166,8 +166,6 @@ pkg_setup() {
 	strip-unsupported-flags
 	# flags from upstream
 	export RUSTFLAGS="${RUSTFLAGS} -C symbol-mangling-version=v0 --cfg tokio_unstable -C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib"
-	# fix error in livekit-rust-sdks
-	export RUSTFLAGS="${RUSTFLAGS} -A unexpected_cfgs"
 	llvm-r1_pkg_setup
 	rust_pkg_setup
 }
