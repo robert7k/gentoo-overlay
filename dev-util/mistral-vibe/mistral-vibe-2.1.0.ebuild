@@ -19,6 +19,7 @@ KEYWORDS="~amd64"
 RESTRICT="test"
 
 RDEPEND="
+	>=dev-libs/tree-sitter-bash-0.25.1
 	~dev-python/agent-client-protocol-0.8.0[${PYTHON_USEDEP}]
 	>=dev-python/anyio-4.12[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-44.0.0[${PYTHON_USEDEP}]
@@ -40,6 +41,7 @@ RDEPEND="
 	>=dev-python/textual-7.4.0[${PYTHON_USEDEP}]
 	dev-python/textual_speedups[${PYTHON_USEDEP}]
 	>=dev-python/tomli-w-1.2.0[${PYTHON_USEDEP}]
+	>=dev-python/tree-sitter-0.25.2[${PYTHON_USEDEP}]
 	dev-python/watchfiles[${PYTHON_USEDEP}]
 	>=dev-python/zstandard-0.25.0[${PYTHON_USEDEP}]
 "
