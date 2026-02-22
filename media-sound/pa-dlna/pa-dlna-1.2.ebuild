@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Forwards audio streams to DLNA devices."
 HOMEPAGE="https://gitlab.com/xdegaye/pa-dlna"
-SRC_URI="https://gitlab.com/xdegaye/${PN}/-/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://gitlab.com/xdegaye/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,4 +27,3 @@ distutils_enable_tests pytest
 python_test() {
 	epytest --ignore=pa_dlna/tests/test_config.py
 }
-
