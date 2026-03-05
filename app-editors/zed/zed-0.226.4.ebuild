@@ -120,16 +120,10 @@ CHECKREQS_MEMORY="8G"
 
 DEPEND="
 	app-arch/zstd:=
-	app-misc/jq
 	dev-db/sqlite:3
-	>=dev-libs/libgit2-1.9.0:=
 	dev-libs/mimalloc
 	dev-libs/openssl:0/3
-	dev-libs/protobuf
 	dev-libs/wayland
-	dev-libs/wayland-protocols
-	dev-util/wayland-scanner
-	dev-util/vulkan-tools
 	|| (
 		media-fonts/dejavu
 		media-fonts/cantarell
@@ -137,10 +131,9 @@ DEPEND="
 		media-fonts/ubuntu-font-family
 	)
 	media-libs/alsa-lib
-	media-libs/fontconfig
+	media-libs/libpulse
 	media-libs/freetype
 	media-libs/vulkan-loader[X]
-	net-misc/curl
 	virtual/zlib:=
 	x11-libs/libX11
 	x11-libs/libxcb:=
@@ -150,6 +143,8 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	app-arch/unzip
 	dev-build/cmake
+	dev-libs/wayland-protocols
+	dev-util/wayland-scanner
 	dev-util/vulkan-headers
 	sys-devel/gettext
 	$(llvm_gen_dep '
