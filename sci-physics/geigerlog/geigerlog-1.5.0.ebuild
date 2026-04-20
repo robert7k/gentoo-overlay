@@ -1,9 +1,9 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_USE_PEP517=setuptools
 
@@ -13,10 +13,12 @@ DESCRIPTION="A Python based GUI program to work with GQ Electronic's Geiger coun
 HOMEPAGE="https://sourceforge.net/projects/geigerlog/"
 SRC_URI="https://downloads.sourceforge.net/project/geigerlog/geigerlog-v${PV}.zip"
 
+S="${WORKDIR}/${PN}-v${PV}/${PN}"
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
@@ -36,8 +38,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/soundfile[${PYTHON_USEDEP}]
 	')"
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${PN}-v${PV}/${PN}"
+BDEPEND="app-arch/unzip"
 
 src_prepare() {
 	default
@@ -58,9 +59,9 @@ src_install() {
 	rm ${MANUAL}
 	rm -r "${S}/data"
 	dodir /usr/share/${PN}
-	chmod +x ${PN}.py
-	cp -r ${S}/* ${D}/usr/share/${PN}
+	chmod +x "${PN}.py"
+	cp -r "${S}/*" "${D}/usr/share/${PN}"
 	dosym /usr/share/${PN}/${PN}.py /usr/bin/${PN}
-	python_fix_shebang ${D}/usr/share/${PN}/${PN}.py
+	python_fix_shebang "${D}/usr/share/${PN}/${PN}.py"
 	make_desktop_entry ${PN}.py GeigerLog /usr/share/${PN}/gres/icon_geigerlog.png
 }
