@@ -1,0 +1,30 @@
+--- a/gsup_utils.py
++++ b/gsup_utils.py
+@@ -193,7 +193,12 @@
+ except ImportError:
+     fpdf = None
+     FPDF = None
+
++try:
++    import playsound
++except ImportError:
++    playsound = None
++
+ #
+ # modules - requiring installation via pip
+ #
+@@ -205,7 +210,6 @@
+     import scipy.signal                 # a subpackage of scipy; needs separate import
+     import scipy.stats                  # a subpackage of scipy; needs separate import
+     import scipy.optimize               # needed for deadtime correction with paralysation
+-    import playsound                    # play any sound file using the original playsound
+     # import playsound3                   # play any sound file; fork of 'playsound':  https://pypi.org/project/playsound3/
+     # from play_sounds import play_file   # sound playing
+     import cpuinfo                      # cmd: cpuinfo.get_cpu_info()
+@@ -1455,5 +1459,5 @@
+
+     try:
+-        if os.path.exists(wavfile): playsound.playsound(wavfile)
++        if playsound and os.path.exists(wavfile): playsound.playsound(wavfile)
+     except Exception as e:
+         exceptPrint(e, defname + f"playing WAV file '{wavfile}' failed")

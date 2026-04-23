@@ -1,0 +1,63 @@
+--- a/gsup_utils.py
++++ b/gsup_utils.py
+@@ -329,5 +329,6 @@
+ from matplotlib       import __version__        as mpl_version
+ from paho.mqtt        import __version__        as paho_version
+-from pip              import __version__        as pip_version
++try:    from pip import __version__ as pip_version
++except ImportError: pip_version = "n/a"
+
+ if sys.version_info >= (3, 8):    # works only with Python version >= v3.8
+@@ -464,7 +465,7 @@
+ def getPathToDataDir():
+     """Return full path of the data directory"""
+
+-    dp = os.path.join(getPathToProgDir(), g.dataDirectory)
++    dp = os.path.join(os.getenv("HOME"), g.dataDirectory)
+     return dp
+
+
+@@ -471,7 +472,7 @@
+ def getPathToConfigDir():
+     """Return full path of the config directory"""
+
+-    dp = os.path.join(getPathToProgDir(), g.configDirectory)
++    dp = os.path.join(os.getenv("HOME"), ".geigerlog", g.configDirectory)
+     return dp
+
+
+@@ -500,7 +501,7 @@
+ def getPathToConfigFile():
+     """Return full path of the geigerlog.cfg file"""
+
+-    dp = os.path.join(g.progDir, g.configDirectory, "geigerlog.cfg")
++    dp = os.path.join(getPathToConfigDir(), "geigerlog.cfg")
+     return dp
+
+ def getPathToCustomConfigFile():
+@@ -506,7 +507,7 @@
+ def getPathToCustomConfigFile():
+     """Return full path of the custom.cfg file"""
+
+-    dp = os.path.join(g.progDir, g.configDirectory, "custom.cfg")
++    dp = os.path.join(getPathToConfigDir(), "custom.cfg")
+     return dp
+
+
+@@ -513,7 +514,7 @@
+ def getPathToSettingsFile():
+     """Return full path of the geigerlog.settings file"""
+
+-    dp = os.path.join(g.progDir, g.configDirectory, "geigerlog.settings")
++    dp = os.path.join(getPathToConfigDir(), "geigerlog.settings")
+     return dp
+
+
+@@ -520,6 +521,7 @@
+ def makeCustomCfgTemplate():
+
+     custom_file = os.path.join(g.configDir, "custom.cfg")
++    os.makedirs(g.configDir, exist_ok=True)
+     with (open(custom_file, "w")) as cf:
+         cf.write(g.customCfgText)
+

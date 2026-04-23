@@ -1,0 +1,36 @@
+--- a/gsup_utils.py
++++ b/gsup_utils.py
+@@ -187,8 +187,12 @@
+
+ from lxml import etree                  # for XML files
+
+-import fpdf                             # for pdf files
+-from fpdf import FPDF                   # which one is needed???
++try:
++    import fpdf
++    from fpdf import FPDF
++except ImportError:
++    fpdf = None
++    FPDF = None
+
+ #
+ # modules - requiring installation via pip
+@@ -390,6 +394,6 @@
+ g.versions["psutil"]               = psutil.__version__
+ g.versions["ntplib"]               = ntplib_version
+ g.versions["lxml-etree"]           = etree.__version__                  # reading XML files
+-g.versions["fpdf"]                 = fpdf.__version__                   # handling PDF files
++g.versions["fpdf"]                 = fpdf.__version__ if fpdf else "n/a"
+
+
+--- a/gsup_spectro.py
++++ b/gsup_spectro.py
+@@ -3827,6 +3827,8 @@
+ def assenbleSpectraIntoPDF():
+     """Search for Spectra files in to be selected dir and all sub dirs and put into a pdf file"""
+
++    if FPDF is None: return
++
+     #######################################################################################################
+
+     def find_all(ext, path):
