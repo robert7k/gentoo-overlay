@@ -24,7 +24,7 @@ CRATES="
 	unindent@0.2.4
 "
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=maturin
 DISTUTILS_EXT=1
 
@@ -44,5 +44,5 @@ KEYWORDS="~amd64"
 RESTRICT="test"
 
 RDEPEND="
-    >=dev-python/textual-0.48.0[${PYTHON_USEDEP}]
+	>=dev-python/textual-0.48.0[${PYTHON_USEDEP}]
 "
