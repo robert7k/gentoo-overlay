@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt	2026-05-05 10:57:49.096443924 +0200
++++ CMakeLists.txt	2026-05-05 10:57:49.097083180 +0200
+@@ -122,15 +122,6 @@
+         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+ )
+ 
+-qt_generate_deploy_qml_app_script(
+-        TARGET sennheiserDesktopClient
+-        OUTPUT_SCRIPT deploy_script
+-        NO_UNSUPPORTED_PLATFORM_ERROR
+-        DEPLOY_USER_QML_MODULES_ON_UNSUPPORTED_PLATFORM
+-        MACOS_BUNDLE_POST_BUILD
+-        DEPLOY_TOOL_OPTIONS ${deploy_tool_options_arg}
+-)
+-install(SCRIPT ${deploy_script})
+ 
+ if(UNIX AND NOT APPLE)
+     install(FILES ${CMAKE_SOURCE_DIR}/sennheiserDesktopClient.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
