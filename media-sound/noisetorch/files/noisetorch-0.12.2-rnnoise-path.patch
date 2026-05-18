@@ -1,0 +1,29 @@
+diff --git a/main.go b/main.go
+index 160c62b..3c85ece 100644
+--- a/main.go
++++ b/main.go
+@@ -97,6 +97,14 @@ func main() {
+ }
+ 
+ func dumpLib() string {
++	if libPath := os.Getenv("NOISETORCH_RNNOISE_PATH"); libPath != "" {
++		if _, err := os.Stat(libPath); err == nil {
++			log.Printf("Using existing librnnoise ladspa module: %s\n", libPath)
++			return libPath
++		}
++		log.Printf("Warning: NOISETORCH_RNNOISE_PATH is set, but does not exist, using embedded library\n")
++	}
++
+ 	f, err := ioutil.TempFile("", "librnnoise-*.so")
+ 	if err != nil {
+ 		log.Fatalf("Couldn't open temp file for librnnoise\n")
+@@ -107,6 +115,9 @@ func dumpLib() string {
+ }
+ 
+ func removeLib(file string) {
++	if file == os.Getenv("NOISETORCH_RNNOISE_PATH") {
++		return
++	}
+ 	err := os.Remove(file)
+ 	if err != nil {
+ 		log.Printf("Couldn't delete temp librnnoise: %v\n", err)
