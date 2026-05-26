@@ -132,9 +132,10 @@ inherit cargo
 DESCRIPTION="Usage analysis tool for Claude Code token usage and costs"
 HOMEPAGE="https://github.com/ryoppippi/ccusage https://ccusage.com/"
 SRC_URI="
-	https://github.com/ryoppippi/ccusage/archive/refs/tags/v${PV}.tar.gz
+	https://github.com/ryoppippi/ccusage/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz
 	${CARGO_CRATE_URIS}
-	https://raw.githubusercontent.com/BerriAI/litellm/${LITELLM_REV}/model_prices_and_context_window.json -> ccusage-${PV}-litellm-pricing.json
+	https://raw.githubusercontent.com/BerriAI/litellm/${LITELLM_REV}/model_prices_and_context_window.json -> \
+		ccusage-${PV}-litellm-pricing.json
 "
 
 S="${WORKDIR}/${P}/rust/crates/ccusage"
@@ -144,6 +145,7 @@ LICENSE="MIT"
 LICENSE+=" Apache-2.0 BSD CDLA-Permissive-2.0 ISC MIT Unicode-3.0"
 SLOT="0"
 KEYWORDS="~amd64"
+RUST_MIN_VER="1.87.0"
 
 src_prepare() {
 	default
