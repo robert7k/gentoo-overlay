@@ -8,7 +8,7 @@ HOMEPAGE="http://pythonhosted.org/pdftools.pdfposter/ https://gitlab.com/pdftool
 EGIT_REPO_URI="https://gitlab.com/pdftools/pdfposter"
 EGIT_COMMIT="v${PV}"
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10,11,12,13} )
+PYTHON_COMPAT=( python3_{12,13,14} )
 
 inherit git-r3 distutils-r1
 
