@@ -13,7 +13,13 @@ HOMEPAGE="https://signal.org/
 SRC_URI="https://updates.signal.org/desktop/apt/pool/s/${MY_PN}/${MY_PN}_${PV}_amd64.deb"
 S="${WORKDIR}"
 
-LICENSE="GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
+LICENSE="AGPL-3"
+# From www-client/chromium for the bundled Electron runtime
+LICENSE+=" Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Base64 Boost-1.0 CC-BY-3.0 CC-BY-4.0 Clear-BSD FFT2D FTL"
+LICENSE+=" IJG ISC LGPL-2 LGPL-2.1 MIT MPL-1.1 MPL-2.0 Ms-PL PSF-2 SGI-B-2.0 SSLeay SunSoft Unicode-3.0"
+LICENSE+=" Unicode-DFS-2015 Unlicense UoI-NCSA ZLIB libtiff openssl"
+# From net-libs/nodejs
+LICENSE+=" Apache-1.1 BlueOak-1.0.0"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 RESTRICT="splitdebug"
