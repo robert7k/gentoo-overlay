@@ -13,6 +13,7 @@ HOMEPAGE="https://signal.org/
 SRC_URI="https://updates.signal.org/desktop/apt/pool/s/${MY_PN}/${MY_PN}_${PV}_amd64.deb"
 S="${WORKDIR}"
 
+# Corresponding Source: https://github.com/signalapp/Signal-Desktop/blob/v${PV}/LICENSE
 LICENSE="AGPL-3"
 # From www-client/chromium for the bundled Electron runtime
 LICENSE+=" Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Base64 Boost-1.0 CC-BY-3.0 CC-BY-4.0 Clear-BSD FFT2D FTL"
