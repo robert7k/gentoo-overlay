@@ -1,0 +1,33 @@
+# Copyright 2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DESCRIPTION="Scale and tile PDF images/pages to print on multiple pages"
+HOMEPAGE="https://pythonhosted.org/pdftools.pdfposter/ https://gitlab.com/pdftools/pdfposter"
+EGIT_REPO_URI="https://gitlab.com/pdftools/pdfposter"
+EGIT_COMMIT="v${PV}"
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{12,13,14} )
+
+inherit git-r3 distutils-r1
+
+LICENSE="GPL-3"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+
+RDEPEND="
+	dev-python/pypdf[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	${DEPEND}"
+
+src_prepare() {
+	find "${S}" -type f -exec sed -i 's/PyPDF2/pypdf/g' {} +
+
+	default
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
+	find "${D}" -name '*.pth' -delete || die
+}
