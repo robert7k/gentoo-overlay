@@ -1,0 +1,3 @@
+# net-libs/libcapi is masked in ::gentoo pending removal, but is still needed
+# here as a dependency of net-libs/librm.
+net-libs/libcapi
