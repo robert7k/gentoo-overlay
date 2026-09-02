@@ -1,0 +1,40 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+PYTHON_COMPAT=( python3_{13..14} )
+DISTUTILS_USE_PEP517=setuptools
+
+inherit distutils-r1
+
+DESCRIPTION="Helpful tools for debugging AMD Zen systems"
+HOMEPAGE="https://git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools.git"
+SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/superm1/${PN}.git/snapshot/${P}.tar.gz"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="~amd64"
+
+DEPEND="
+	dev-python/jinja2[${PYTHON_USEDEP}]
+	dev-python/matplotlib[${PYTHON_USEDEP}]
+	dev-python/packaging[${PYTHON_USEDEP}]
+	dev-python/pandas[${PYTHON_USEDEP}]
+	dev-python/pyudev[${PYTHON_USEDEP}]
+	dev-python/seaborn[${PYTHON_USEDEP}]
+	dev-python/tabulate[${PYTHON_USEDEP}]"
+
+RDEPEND="${DEPEND}
+	sys-power/iasl"
+
+BDEPEND="dev-python/setuptools-scm"
+
+# cgit snapshot tarballs carry no git metadata for setuptools-scm to read
+export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+distutils_enable_tests unittest
+
+python_test() {
+	eunittest -s src
+}
