@@ -142,7 +142,7 @@ SRC_URI="
 	https://github.com/ryoppippi/ccusage/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz
 	${CARGO_CRATE_URIS}
 	https://raw.githubusercontent.com/BerriAI/litellm/${LITELLM_REV}/model_prices_and_context_window.json -> \
-		ccusage-${PV}-litellm-pricing.json
+		litellm-pricing-${LITELLM_REV}.json
 "
 
 S="${WORKDIR}/${P}/rust/crates/ccusage"
@@ -166,6 +166,6 @@ src_prepare() {
 }
 
 src_configure() {
-	export CCUSAGE_PRICING_JSON_PATH="${DISTDIR}/ccusage-${PV}-litellm-pricing.json"
+	export CCUSAGE_PRICING_JSON_PATH="${DISTDIR}/litellm-pricing-${LITELLM_REV}.json"
 	default
 }
