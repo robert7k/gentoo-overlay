@@ -1,0 +1,42 @@
+diff --git a/btuicontrols/BluetoothHandler.cpp b/btuicontrols/BluetoothHandler.cpp
+index 88549ea..41e0fe0 100644
+--- a/btuicontrols/BluetoothHandler.cpp
++++ b/btuicontrols/BluetoothHandler.cpp
+@@ -6,6 +6,7 @@ BluetoothHandler::BluetoothHandler(QObject *parent) :
+     QObject(parent),
+     discoveryAgent(new QBluetoothDeviceDiscoveryAgent(this)),
+     serviceUuid(QStringLiteral("0000fdce-0000-1000-8000-00805f9b34fb")),
++    gaiaUuid(QStringLiteral("a2129ff3-081b-4c45-8afe-469d9c4842ec")),
+     m_isSearching(false)
+ //#ifdef Q_OS_APPLE
+ //    , serviceInfos{}
+@@ -20,14 +21,15 @@ void BluetoothHandler::startDeviceDiscovery() {
+ //    qDebug() << "Start discovery";
+     m_isSearching = true;
+     Q_EMIT isSearchingChanged();
+-    discoveryAgent->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
++    discoveryAgent->start();
+ //#ifdef Q_OS_APPLE
+ //    serviceInfos.clear();
+ //#endif
+ }
+ 
+ void BluetoothHandler::deviceDiscovered(const QBluetoothDeviceInfo &device) {
+-    if (device.serviceUuids().contains(serviceUuid)) {
++    const auto uuids = device.serviceUuids();
++    if (uuids.contains(serviceUuid) || uuids.contains(gaiaUuid)) {
+         const auto uids = device.serviceUuids();
+         qDebug() << "Found device with required service:" << device.name() << device.address() << device.deviceUuid();
+ //#ifdef Q_OS_APPLE
+diff --git a/btuicontrols/BluetoothHandler.h b/btuicontrols/BluetoothHandler.h
+index d5bc664..4e9a336 100644
+--- a/btuicontrols/BluetoothHandler.h
++++ b/btuicontrols/BluetoothHandler.h
+@@ -49,6 +49,7 @@ private:
+     QBluetoothAddress selectedDeviceAddress;
+ 
+     QBluetoothUuid serviceUuid;
++    QBluetoothUuid gaiaUuid;
+     bool m_isSearching;
+ 
+ signals:

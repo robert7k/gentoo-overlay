@@ -16,9 +16,9 @@ RESTRICT="test"
 
 BDEPEND="dev-lang/python"
 DEPEND="
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtconnectivity:6[bluetooth]
-	dev-qt/qtdeclarative:6
+	dev-qt/qtbase:6=[gui]
+	dev-qt/qtconnectivity:6=[bluetooth]
+	dev-qt/qtdeclarative:6=
 	net-wireless/bluez
 "
 RDEPEND="${DEPEND}"
@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}/fix-cmake.patch"
 	"${FILESDIR}/fix-devicelistpage.patch"
 	"${FILESDIR}/fix-bluetoothsocketwrapper.patch"
+	"${FILESDIR}/fix-device-discovery.patch"
 )
 
 src_install() {
