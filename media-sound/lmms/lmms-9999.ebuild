@@ -65,7 +65,6 @@ RDEPEND="${COMMON_DEPEND}
 DOCS=( README.md doc/AUTHORS )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9999-no_compress_man.patch" #733284
 	"${FILESDIR}/${PN}-9999-plugin-path.patch" #907285
 )
 
