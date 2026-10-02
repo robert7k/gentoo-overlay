@@ -17,13 +17,14 @@ KEYWORDS=""
 IUSE="dbus"
 
 RDEPEND="
-	>=dev-libs/quazip-1.3-r2:=[qt6(+)]
+	dev-libs/quazip:=
 	dev-qt/qt5compat:6
 	dev-qt/qtbase:6[dbus?,gui,network,sql,sqlite,widgets,xml]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtsvg:6
 	dev-qt/qttools:6[assistant,widgets]
 	dev-qt/qtwebengine:6[widgets]
+	media-libs/blend2d:=
 	media-libs/libjpeg-turbo:=
 	sci-geosciences/routino
 	sci-libs/alglib:=
@@ -33,10 +34,17 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/qttools:6[linguist]"
 
+src_prepare() {
+	sed -i 's/^get_target_property(BLEND2D_IFACE_INCLUDE_DIRS blend2d .*//' CMakeLists.txt || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_QT6DBus=$(usex dbus)
 		-DHTML_INSTALL_DIR="${EPREFIX}/usr/share/doc/${PF}/qch"
+		-DFETCHCONTENT_TRY_FIND_PACKAGE_MODE=ALWAYS
+		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
 	)
 	cmake_src_configure
 }
