@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile=/run/languagetool.pid
+
+depend() {
+	after modules
+}
+
+start() {
+	ebegin "Starting languagetool [server]"
+	start-stop-daemon \
+		--start \
+		--user languagetool \
+		--make-pidfile \
+		--pidfile $pidfile \
+		--background \
+		--exec /usr/bin/languagetool-server \
+		-- --config "/etc/languagetool.cfg" --allow-origin "*" --port 8081
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping languagetool [server]"
+	start-stop-daemon --stop --pidfile $pidfile
+	eend $?
+}
