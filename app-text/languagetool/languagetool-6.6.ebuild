@@ -32,6 +32,7 @@ CP_DEPEND="
 "
 
 RDEPEND="
+	acct-user/languagetool
 	>=virtual/jre-17
 	${CP_DEPEND}"
 

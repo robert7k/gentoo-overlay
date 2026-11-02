@@ -11,6 +11,7 @@ start() {
 	ebegin "Starting languagetool [server]"
 	start-stop-daemon \
 		--start \
+		--user languagetool \
 		--make-pidfile \
 		--pidfile $pidfile \
 		--background \
