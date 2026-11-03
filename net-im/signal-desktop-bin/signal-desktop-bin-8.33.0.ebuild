@@ -10,7 +10,9 @@ inherit pax-utils unpacker xdg
 DESCRIPTION="Allows you to send and receive messages of Signal Messenger on your computer"
 HOMEPAGE="https://signal.org/
 	https://github.com/signalapp/Signal-Desktop"
-SRC_URI="https://updates.signal.org/desktop/apt/pool/s/${MY_PN}/${MY_PN}_${PV}_amd64.deb"
+SRC_URI="
+	amd64? ( https://updates.signal.org/desktop/apt/pool/s/${MY_PN}/${MY_PN}_${PV}_amd64.deb )
+	arm64? ( https://updates.signal.org/desktop/apt-arm64/pool/s/${MY_PN}/${MY_PN}_${PV}_arm64.deb )"
 S="${WORKDIR}"
 
 # Corresponding Source: https://github.com/signalapp/Signal-Desktop/blob/v${PV}/LICENSE
@@ -22,7 +24,7 @@ LICENSE+=" Unicode-DFS-2015 Unlicense UoI-NCSA ZLIB libtiff openssl"
 # From net-libs/nodejs
 LICENSE+=" Apache-1.1 BlueOak-1.0.0"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~arm64"
 RESTRICT="splitdebug"
 
 RDEPEND="
