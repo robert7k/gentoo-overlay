@@ -36,7 +36,9 @@ BDEPEND="virtual/pkgconfig"
 src_configure() {
 	econf \
 		$(use_enable gpm hw-tty-linux) \
-		$(use_enable X hw-x11 hw-xft x)
+		$(use_enable X hw-x11) \
+		$(use_enable X hw-xft) \
+		$(use_with X x)
 }
 
 src_install() {
