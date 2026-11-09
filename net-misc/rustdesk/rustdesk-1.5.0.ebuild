@@ -1038,7 +1038,7 @@ LLVM_COMPAT=( {18..20} )
 RUST_MIN_VER="1.81.0"
 RUST_NEEDS_LLVM=1
 
-inherit cargo desktop llvm-r1 xdg-utils
+inherit cargo desktop llvm-r2 xdg-utils
 
 DESCRIPTION="RustDesk Remote Desktop"
 HOMEPAGE="https://rustdesk.com/"
@@ -1114,7 +1114,7 @@ QA_PRESTRIPPED="
 RESTRICT="test"
 
 pkg_setup() {
-	llvm-r1_pkg_setup
+	llvm-r2_pkg_setup
 	rust_pkg_setup
 }
 
